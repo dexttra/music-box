@@ -17,7 +17,7 @@ namespace OnlineShopWebApp.Controllers
 
         public string Index()
         {       
-            return string.Join("\n", ProductsList.Products);
+            return string.Join("\n\n", ProductsList.Products);
         }
 
         public IActionResult Privacy()
