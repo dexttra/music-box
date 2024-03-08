@@ -16,13 +16,8 @@ namespace OnlineShopWebApp.Controllers
         }
 
         public string Index()
-        {
-            StringBuilder s = new StringBuilder();
-            foreach (Product p in ProductsList.Products)
-            {
-                s.Append(p + "\n");
-            }
-            return s.ToString();
+        {       
+            return string.Join("\n", ProductsList.Products);
         }
 
         public IActionResult Privacy()
