@@ -2,18 +2,22 @@
 {
     public class Product
     {
-        private static int UniqId;
+        private static int uniqId;
         public int Id { get; }
-        public string Name { get; set; }
-        public decimal Cost { get; set; }
-        public string Description { get; set; }
+        public string Name { get; private set; }
+        public decimal Cost { get; private set; }
+        public string Description { get; private set; }
 
         public Product(string name, decimal cost, string description)
         {
-            Id = UniqId++;
+            Id = uniqId++;
             Name = name;
             Cost = cost;
             Description = description;
+        }
+        public override string ToString() 
+        {
+            return $"\r {Id} \n {Name} \n {Cost}";
         }
     }
 }

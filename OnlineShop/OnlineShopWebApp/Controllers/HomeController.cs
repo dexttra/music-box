@@ -1,6 +1,8 @@
 using System.Diagnostics;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
+
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -13,9 +15,14 @@ namespace OnlineShopWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public string Index()
         {
-            return View();
+            StringBuilder s = new StringBuilder();
+            foreach (Product p in ProductsList.Products)
+            {
+                s.Append(p + "\n");
+            }
+            return s.ToString();
         }
 
         public IActionResult Privacy()
