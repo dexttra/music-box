@@ -8,9 +8,10 @@ namespace OnlineShopWebApp.Controllers
     public class ProductController : Controller
     {
         public string Index(int id)
-        {       
-            var p = ProductsList.Products.Single(p => p.Id == id);
-            return p.ToString();
+        {
+            var p = ProductsList.GetById(id);
+            if (p != null) return p.ToString();
+            else return "Товар не найден.";
         }
     }
 }

@@ -10,5 +10,10 @@
             new Product("Король и Шут – Акустический альбом", 5500, "Label: United Music Group – CDVP 4026577\r\nFormat: Vinyl, LP\r\nCountry: Russia\r\nReleased: Dec 21, 2023\r\nGenre: Rock\r\nStyle: Punk"),
             new Product("Doja Cat – Planet Her (Deluxe Edition)", 5500, "Label: Kemosabe Records, RCA, Sony Music – 19439-45681-1\r\nFormat: 2xVinyl, LP, Album, Deluxe Edition, Stereo\r\nCountry: Europe\r\nReleased: May 27, 2022\r\nGenre: Hip Hop, Funk / Soul, Pop\r\nStyle: Pop Rap, Contemporary R&B, Dance-pop, Trap")
         };
+
+        public static Product GetById(int id)
+        {
+            return Products.SingleOrDefault(p => p.Id == id);         
+        }
     }
 }
