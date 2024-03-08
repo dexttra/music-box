@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
-using System.Diagnostics.Eventing.Reader;
-using System.Security.Cryptography.X509Certificates;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -9,9 +7,9 @@ namespace OnlineShopWebApp.Controllers
     {
         public string Index(int id)
         {
-            var p = ProductsList.GetById(id);
-            if (p != null) return p.ToString();
-            else return "Товар не найден.";
+            var product = ProductsList.GetById(id);
+            if (product != null) return product.ToString();
+            return "Товар не найден.";
         }
     }
 }
