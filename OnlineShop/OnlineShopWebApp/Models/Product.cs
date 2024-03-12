@@ -5,19 +5,19 @@
         private static int uniqId;
         public int Id { get; }
         public string Name { get; private set; }
-        public decimal Cost { get; private set; }
+        public decimal Price { get; private set; }
         public string Description { get; private set; }
 
-        public Product(string name, decimal cost, string description)
+        public Product(string name, decimal price, string description)
         {
             Id = uniqId++;
             Name = name;
-            Cost = cost;
+            Price = price;
             Description = description;
         }
         public override string ToString() 
         {
-            return $"{Id} \n {Name} \n {Cost} \n {Description}";
+            return $"{Id} \n {Name} \n {Price} \n {Description}";
         }
     }
 }

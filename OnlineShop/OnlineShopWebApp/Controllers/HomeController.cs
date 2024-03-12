@@ -15,9 +15,10 @@ namespace OnlineShopWebApp.Controllers
             _logger = logger;
         }
 
-        public string Index()
+        public IActionResult Index()
         {       
-            return string.Join("\n\n", ProductsStorage.Products);
+            var products = ProductsStorage.Products;
+            return View(products);
         }
 
         public IActionResult Privacy()
