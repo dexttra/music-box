@@ -1,0 +1,21 @@
+﻿@model Product
+
+<header>
+	<link rel="stylesheet" href="styles.css" />
+</header>
+
+@if (Model is null) 
+{ 
+	<h1>Товар не найден</h1> 
+}
+
+@if (Model != null)
+{
+    <div> 
+        <img src="https://m.media-amazon.com/images/I/71v9YKQxm2L._UF1000,1000_QL80_.jpg" height="600" />
+        <h1>@Model.Name</h1>
+        <a class="btn btn-success" href ="#" >Добавить в корзину</a>
+        <a class="btn btn-success" href="#">Купить</a>
+        <a class="btn btn-success" href="https://localhost:7080/Home/Index">Вернуться в каталог</a>
+    </div>
+}

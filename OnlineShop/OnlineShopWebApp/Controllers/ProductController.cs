@@ -5,11 +5,10 @@ namespace OnlineShopWebApp.Controllers
 {
     public class ProductController : Controller
     {
-        public string Index(int id)
+        public IActionResult Index(int id)
         {
             var product = ProductsStorage.TryGetById(id);
-            if (product != null) return product.ToString();
-            return "Товар не найден.";
+            return View(product);
         }
     }
 }
