@@ -1,7 +1,11 @@
 ﻿@model Product
 
 <header>
-	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
 </header>
 
 @if (Model is null) 
@@ -11,11 +15,21 @@
 
 @if (Model != null)
 {
-    <div> 
-        <img src="https://m.media-amazon.com/images/I/71v9YKQxm2L._UF1000,1000_QL80_.jpg" height="150" />
-        <h1>@Model.Name</h1>
-        <a class="btn btn-success" href ="#" >Добавить в корзину</a>
-        <a class="btn btn-success" href="#">Купить</a>
+    <div class="product-details">
+        <div class="product-image">
+            <img src="https://m.media-amazon.com/images/I/71v9YKQxm2L._UF1000,1000_QL80_.jpg" height="500" />
+        </div>
+        <div class="product-info">
+            <h1>@Model.Name</h1>
+            <p>Артикул: @Model.Id</p>
+            <p>Цена: @Model.Price</p>
+            <div class="buttons-container">
+                <button class="product-btn cart-btn">В КОРЗИНУ</button>
+                <button class="product-btn buy-btn">КУПИТЬ</button>
+            </div>
+            <p>Описание: @Model.Description</p>
+            
+        </div>
         <a class="btn btn-success" href="/Home/Index">Вернуться в каталог</a>
     </div>
 }

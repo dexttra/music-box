@@ -63,3 +63,11 @@
    text-decoration: none; 
    color: inherit;
 }
+
+.product-details{
+    display: flex;
+}
+
+.product-info p{
+    text-align: center;
+}
