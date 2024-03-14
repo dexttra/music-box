@@ -1,0 +1,71 @@
+﻿.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-bottom: 30px;
+}
+
+.product-btn {
+    font-family: "PT Sans Narrow", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.cart-btn {
+    height: 33px;
+    width: 114px;
+    background-color: #F35638;
+    color: white;
+    border: 0;
+    font-size: 17px;
+}
+
+.buy-btn {
+    height: 33px;
+    width: 84px;
+    color: #F35638;
+    border-color: #F35638;
+    border-width: thin;
+    font-size: 17px;
+}
+
+.product-details {
+    display: flex;
+    text-align: center;
+    font-family: "PT Sans Narrow", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.product-name {
+    font-family: "PT Sans Narrow", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.product-details img{
+    height: 560px;
+    width: 560px;
+    margin-right: 100px;
+}
+
+.back-btn{
+    margin-right: 20px;
+}
+
+.escape-btns {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    margin-left: 20px; 
+    margin-top: 70px; 
+}
+
+.back-btn {
+    border: medium none;
+    background-image: none;
+    background: transparent;
+    float: left;
+    background-color: transparent;
+}
