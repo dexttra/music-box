@@ -2,17 +2,22 @@
 {
     public class Cart
     {
-        public readonly int UserId;
-        public List<Product> ProductsList {  get; set; } = new List<Product>();
+        public int UserId { get; }
+        public List<CartItem> Items { get; set; } = new List<CartItem>();
 
-        public Cart(int id) 
+        public decimal Price
         {
-            UserId = id;
+            get
+            {
+                return Items.Sum(x => x.Price);
+            }
         }
 
-        public void AddProduct(Product product)
+        public Cart(int userId)
         {
-            ProductsList.Add(product);
+            UserId = userId;
         }
+
+     
     }
 }

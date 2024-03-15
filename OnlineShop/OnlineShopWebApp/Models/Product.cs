@@ -8,12 +8,15 @@
         public decimal Price { get; private set; }
         public string Description { get; private set; }
 
-        public Product(string name, decimal price, string description)
+        public string ImagePath {  get; private set; } 
+
+        public Product(string name, decimal price, string description, string imagePath)
         {
             Id = uniqId++;
             Name = name;
             Price = price;
             Description = description;
+            ImagePath = imagePath;
         }
         public override string ToString() 
         {

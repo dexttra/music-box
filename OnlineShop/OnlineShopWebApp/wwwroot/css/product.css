@@ -9,25 +9,15 @@
 .product-btn {
     font-family: "PT Sans Narrow", sans-serif;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 16px;
+    background-color: #f35638;
+    border: 0;
 }
 
 .cart-btn {
-    height: 33px;
-    width: 114px;
-    background-color: #F35638;
-    color: white;
-    border: 0;
-    font-size: 17px;
 }
 
 .buy-btn {
-    height: 33px;
-    width: 84px;
-    color: #F35638;
-    border-color: #F35638;
-    border-width: thin;
-    font-size: 17px;
 }
 
 .product-details {

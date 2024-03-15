@@ -19,14 +19,14 @@
 @if (Model != null)
 {
     <div class="product-details">
-        <img src="https://m.media-amazon.com/images/I/71v9YKQxm2L._UF1000,1000_QL80_.jpg"/>
+        <img src="@Model.ImagePath"/>
         <div class="product-info">
             <p class="product-name">@Model.Name</p>
             <p>Артикул: @Model.Id</p>
             <p>Цена: @Model.Price</p>
-            <div class="buttons-container">
-                <button class="product-btn cart-btn">В КОРЗИНУ</button>
-                <button class="product-btn buy-btn">КУПИТЬ</button>
+            <div class="buttons-container">             
+                <a class="product-btn btn btn-dark" href="/cart/add?productId=@Model.Id">В КОРЗИНУ</a>
+                <a class="product-btn btn btn-dark" href="#">КУПИТЬ</a>
             </div>
             <p>@Model.Description</p>           
         </div>       

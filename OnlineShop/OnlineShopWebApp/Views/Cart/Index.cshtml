@@ -1,7 +1,53 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@model Cart
+
+<header>
+	<link rel="stylesheet" href="/css/cart.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+</header>
+
+<div class="escape-btns">
+	<a class="back-btn btn" href="/Home/Index">⟵ НАЗАД</a>
+</div>
+
+
+@if (Model is null)
+{
+	<h3>Корзина пуcтая</h3>
 }
 
-<h1>Index</h1>
-
+else
+{
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Название</th>
+						<th>Цена руб.</th>
+						<th>Количество</th>
+						<th>Стоимость руб.</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Items)
+					{
+						<tr>
+							<td>@item.Product.Name</td>
+							<td>@item.Product.Price</td>
+							<td>@item.Amount</td>
+							<td>@item.Price</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			<div class="text-end">
+				<h3>Итого @Model.Price рублей</h3>
+			</div>
+			<div class="text-end">
+			<a class="btn btn-success" role="button">Оформить заказ</a>
+			</div>
+		</div>
+	</div>
+}
