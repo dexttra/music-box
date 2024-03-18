@@ -2,16 +2,16 @@
 
 namespace OnlineShopWebApp.Models
 {
-	public static class CartsStorage
+	public class CartsStorage
 	{
-		public static readonly List<Cart> Carts = new List<Cart>();
+		public readonly List<Cart> Carts = new List<Cart>();
 
-		public static Cart TryGetByUserId(int userId)
+		public Cart TryGetByUserId(int userId)
 		{
 			return Carts.SingleOrDefault(cart => cart.UserId == userId);
 		}
 
-		public static void Add(Product product, int userId)
+		public void Add(Product product, int userId)
 		{
 			var existingCart = TryGetByUserId(userId);
 			if (existingCart is null)

@@ -2,7 +2,7 @@
 {
     public class ProductsStorage
     {
-        public readonly static List<Product> Products = new List<Product>()
+        public readonly List<Product> Products = new List<Product>()
         {
             new Product("Lana Del Rey - Born To Die", 5000, "Label: Interscope Records, Polydor – B0030285-01\r\nFormat: Vinyl, LP, Album, Limited Edition, Reissue, Red Opaque\r\nCountry: US\r\nReleased: Feb 7, 2020\r\nGenre: Rock, Pop\r\nStyle: Dream Pop, Indie Pop, Trip Hop", "/images/image1.jpg"),
             new Product("Lana Del Rey – Blue Banisters", 5500, "Label: Polydor – 3859014, Interscope Records – 00602438590148\r\nFormat: 2xVinyl, LP, Album\r\nCountry: USA & Europe\r\nReleased: Oct 22, 2021\r\nGenre: Pop", "/images/image2.webp"),
@@ -15,9 +15,9 @@
         };
 
 
-        public static Product TryGetById(int id)
+		public Product TryGetById(int id)
         {
-            return Products.SingleOrDefault(product => product.Id == id);         
-        }
+            return Products.SingleOrDefault(product => product.Id == id);
+		}
     }
 }

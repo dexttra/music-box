@@ -1,7 +1,11 @@
+using OnlineShopWebApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ProductsStorage>();
+builder.Services.AddSingleton<CartsStorage>();
 
 var app = builder.Build();
 
