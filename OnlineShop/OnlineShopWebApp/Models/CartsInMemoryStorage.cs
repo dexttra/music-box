@@ -2,7 +2,7 @@
 
 namespace OnlineShopWebApp.Models
 {
-	public class CartsStorage
+	public class CartsInMemoryStorage : ICartsStorage
 	{
 		public readonly List<Cart> Carts = new List<Cart>();
 

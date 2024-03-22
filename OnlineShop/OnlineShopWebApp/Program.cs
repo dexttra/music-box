@@ -4,8 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<ProductsStorage>();
-builder.Services.AddSingleton<CartsStorage>();
+builder.Services.AddSingleton<IProductsStorage, ProductsInMemoryStorage>();
+builder.Services.AddSingleton<ICartsStorage, CartsInMemoryStorage>();
 
 var app = builder.Build();
 
