@@ -38,6 +38,8 @@ else
 							<td>@item.Product.Price</td>
 							<td>@item.Amount</td>
 							<td>@item.Price</td>
+							<td><a href="/cart/add?productId=@item.Product.Id"><button type="button" class="btn btn-success cart-btn">+</button></a></td>
+							<td><a href ="/cart/remove?productId=@item.Product.Id"><button type="button" class="btn btn-danger cart-btn">-</button></a></td>
 						</tr>
 					}
 				</tbody>
@@ -46,7 +48,8 @@ else
 				<h3>Итого @Model.Price рублей</h3>
 			</div>
 			<div class="text-end">
-			<a class="btn btn-success" role="button">Оформить заказ</a>
+				<a href="/cart/clearall?userId=@Model.UserId" Constants.UserId class="btn btn-danger" role="button">Очистить корзину</a>
+				<a class="btn btn-success" role="button">Оформить заказ</a>
 			</div>
 		</div>
 	</div>

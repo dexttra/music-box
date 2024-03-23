@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Http.Features;
+using System.Reflection.Metadata.Ecma335;
 
 namespace OnlineShopWebApp.Models
 {
 	public class CartsInMemoryStorage : ICartsStorage
 	{
-		public readonly List<Cart> Carts = new List<Cart>();
+		private readonly List<Cart> carts = new List<Cart>();
+
+
+		public List<Cart> GetAll(int userId) 
+		{
+			return carts;
+		}
 
 		public Cart TryGetByUserId(int userId)
 		{
-			return Carts.SingleOrDefault(cart => cart.UserId == userId);
+			return carts.SingleOrDefault(cart => cart.UserId == userId);
 		}
 
 		public void Add(Product product, int userId)
@@ -21,7 +28,7 @@ namespace OnlineShopWebApp.Models
 				{
 					new CartItem(product, 1)
 				};
-				Carts.Add(newCart);
+				carts.Add(newCart);
 			}
 			else
 			{
@@ -35,6 +42,20 @@ namespace OnlineShopWebApp.Models
 					existingCart.Items.Add(new CartItem(product, 1));
 				}
 			}
+		}
+
+		public void Remove(Product product, int userId)
+		{
+			var cart = TryGetByUserId(userId);
+			var cartItem = cart.Items.SingleOrDefault(item => item.Product.Id == product.Id);
+
+			if (cartItem.Amount == 1) cart.Items.Remove(cartItem);
+			else cartItem.Amount -= 1;
+		}
+
+		public void ClearAll(Cart cart)
+		{
+			cart.Items.Clear();
 		}
 	}
 }
