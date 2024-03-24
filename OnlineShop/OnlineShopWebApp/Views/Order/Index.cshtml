@@ -1,0 +1,57 @@
+﻿<header>
+	<link rel="stylesheet" href="/css/order.css">
+</header>
+<div class="box-2">
+	<div class="box-inner-2">
+		<div>
+			<p class="fw-bold">Детали оплаты</p>
+			<p class="dis mb-3">Чтобы оформить заказ заполните информацию</p>
+		</div>
+		<div>
+			<p class="dis fw-bold mb-2">ФИО</p>
+			<input type="text" class="form-control" placeholder="Имя">
+			<input type="text" class="form-control" placeholder="Фамилия">
+		</div>
+		<div class="mb-3">
+			<p class="dis fw-bold mb-2">Email</p>
+			<input class="form-control" type="email" placeholder="Email" />
+		</div>
+		<div>
+			<p class="dis fw-bold mb-2">Данные карты</p>
+			<div class="d-flex align-items-center justify-content-between card-atm border rounded">
+				<div class="fab fa-cc-visa ps-3"></div>
+				<input type="text" class="form-control" placeholder="Номер карты">
+				<div class="d-flex w-50">
+					<input type="text" class="form-control px-0" placeholder="MM/YY">
+					<input type="password" maxlength=3 class="form-control px-0" placeholder="CVV">
+				</div>
+			</div>
+			<div class="my-3 cardname">
+				<p class="dis fw-bold mb-2">Имя владельца карты</p>
+				<input class="form-control" type="text">
+			</div>
+			<div class="address">
+				<p class="dis fw-bold mb-3">Адрес доставки</p>
+				<input type="text" class="form-control" placeholder="Город">
+				<div class="d-flex">
+					<input class="form-control zip" type="text" placeholder="Улица">
+					<input class="form-control state" type="text" placeholder="Номер дома/кв">
+				</div>
+			</div>
+			<div class="d-flex flex-column dis">
+				<div class="d-flex align-items-center justify-content-between mb-2">
+					<p class="fw-bold">Итого</p>
+					<p class="fw-bold"><span class="fas fa-dollar-sign"></span>0</p>
+				</div>
+				<a href="/order/buy">
+					<div class="btn btn-primary mt-2">
+						<span class="fas fa-dollar-sign px-1">Перейти к оплате</span>
+					</div>
+				</a>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

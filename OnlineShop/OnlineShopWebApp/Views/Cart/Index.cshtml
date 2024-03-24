@@ -2,9 +2,6 @@
 
 <header>
 	<link rel="stylesheet" href="/css/cart.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
 </header>
 
 <div class="escape-btns">
@@ -28,6 +25,8 @@ else
 						<th>Цена руб.</th>
 						<th>Количество</th>
 						<th>Стоимость руб.</th>
+						<th>Добавить</th>
+						<th>Удалить</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -39,18 +38,19 @@ else
 							<td>@item.Amount</td>
 							<td>@item.Price</td>
 							<td><a href="/cart/add?productId=@item.Product.Id"><button type="button" class="btn btn-success cart-btn">+</button></a></td>
-							<td><a href ="/cart/remove?productId=@item.Product.Id"><button type="button" class="btn btn-danger cart-btn">-</button></a></td>
+							<td><a href="/cart/removeitem?productId=@item.Product.Id"><button type="button" class="btn btn-danger cart-btn">-</button></a></td>
 						</tr>
 					}
 				</tbody>
 			</table>
 			<div class="text-end">
-				<h3>Итого @Model.Price рублей</h3>
+				<h3>Итого: @Model.Price рублей</h3>
 			</div>
-			<div class="text-end">
-				<a href="/cart/clearall?userId=@Model.UserId" Constants.UserId class="btn btn-danger" role="button">Очистить корзину</a>
-				<a class="btn btn-success" role="button">Оформить заказ</a>
+			<div class="text-end d-flex justify-content-between">
+				<a href="/cart/clearall?userId=@Model.UserId" class="btn btn-danger" role="button">Очистить корзину</a>
+				<a href="/order/index" class="btn btn-success" role="button">Перейти к оформлению</a>
 			</div>
+
 		</div>
 	</div>
 }

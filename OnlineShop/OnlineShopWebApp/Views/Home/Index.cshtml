@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 @{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
 
 <header>
@@ -9,28 +9,24 @@
 
 
 <header>
-    <link rel="stylesheet" href="/css/site.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" href="/css/site.css" />
 </header>
 
 <div class="products-container">
-    @foreach (Product product in Model)
-    {
-        <div class="product-item">
-            <a class="product-link" href="/product/index/@product.Id">
-            <img src="@product.ImagePath" height="500" alt="@product.Name">
-            <div class="info-container">
-                <p class="product-name">@product.Name</p>
-                <p class="product-price">@product.Price</p>
-            </div>
-           </a>
-            <div class="buttons-container">
-                 <a class="product-btn btn btn-dark" href="/cart/add?productId=@product.Id">В КОРЗИНУ</a>
-                 <a class="product-btn btn btn-dark" href="#">КУПИТЬ</a>
-            </div>
-        </div>       
-    }
+	@foreach (Product product in Model)
+	{
+		<div class="product-item">
+			<a class="product-link" href="/product/index/@product.Id">
+				<img src="@product.ImagePath" height="500" alt="@product.Name">
+				<div class="info-container">
+					<p class="product-name">@product.Name</p>
+					<p class="product-price">@product.Price</p>
+				</div>
+			</a>
+			<div class="buttons-container">
+				<a class="product-btn btn btn-dark" href="/product/index/@product.Id">ПОДРОБНЕЕ</a>
+				<a class="product-btn btn btn-dark" href="/cart/add?productId=@product.Id">В КОРЗИНУ</a>
+			</div>
+		</div>
+	}
 </div>

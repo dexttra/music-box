@@ -26,19 +26,17 @@ namespace OnlineShopWebApp.Controllers
 		public IActionResult Add(int productId)
 		{
 			var product = productsStorage.TryGetById(productId);
-			cartsStorage.Add(product, Constants.UserId);
+			cartsStorage.Add(Constants.UserId, product);
 			return RedirectToAction("Index");
 		}
-		public IActionResult Remove(int productId)
+		public IActionResult RemoveItem(int userId, int productId)
 		{
-			var product = productsStorage.TryGetById(productId);
-			cartsStorage.Remove(product, Constants.UserId);
+			cartsStorage.RemoveItem(Constants.UserId, productId);
 			return RedirectToAction("Index");
 		}
-		public IActionResult ClearAll()
+		public IActionResult ClearAll(int userId)
 		{
-			var cart = cartsStorage.TryGetByUserId(Constants.UserId);
-			cartsStorage.ClearAll(cart);
+			cartsStorage.ClearAll(Constants.UserId);
 			return RedirectToAction("Index");
 		}
 	}

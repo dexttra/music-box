@@ -18,7 +18,7 @@ namespace OnlineShopWebApp.Models
 			return carts.SingleOrDefault(cart => cart.UserId == userId);
 		}
 
-		public void Add(Product product, int userId)
+		public void Add(int userId, Product product)
 		{
 			var existingCart = TryGetByUserId(userId);
 			if (existingCart is null)
@@ -44,18 +44,19 @@ namespace OnlineShopWebApp.Models
 			}
 		}
 
-		public void Remove(Product product, int userId)
+		public void RemoveItem(int userId, int productId)
 		{
 			var cart = TryGetByUserId(userId);
-			var cartItem = cart.Items.SingleOrDefault(item => item.Product.Id == product.Id);
+			var cartItem = cart.Items.SingleOrDefault(item => item.Product.Id == productId);
 
 			if (cartItem.Amount == 1) cart.Items.Remove(cartItem);
 			else cartItem.Amount -= 1;
 		}
 
-		public void ClearAll(Cart cart)
+		public void ClearAll(int userId)
 		{
-			cart.Items.Clear();
+            var cart = TryGetByUserId(userId);
+            cart.Items.Clear();
 		}
 	}
 }

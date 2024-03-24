@@ -2,35 +2,31 @@
 
 <header>
 	<link rel="stylesheet" href="/css/product.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
 </header>
 
 <div class="escape-btns">
-    <a class="back-btn btn" href="/Home/Index">⟵ НАЗАД</a>
+	<a class="back-btn btn" href="/Home/Index">⟵ НАЗАД</a>
 </div>
 
-@if (Model is null) 
-{ 
-	<h1>Товар не найден</h1> 
+@if (Model is null)
+{
+	<h1>Товар не найден</h1>
 }
 
 @if (Model != null)
 {
-    <div class="product-details">
-        <img src="@Model.ImagePath"/>
-        <div class="product-info">
-            <p class="product-name">@Model.Name</p>
-            <p>Артикул: @Model.Id</p>
-            <p>Цена: @Model.Price</p>
-            <div class="buttons-container">             
-                <a class="product-btn btn btn-dark" href="/cart/add?productId=@Model.Id">В КОРЗИНУ</a>
-                <a class="product-btn btn btn-dark" href="#">КУПИТЬ</a>
-            </div>
-            <p>@Model.Description</p>           
-        </div>       
-    </div>
-   
-    
+	<div class="product-details">
+		<img src="@Model.ImagePath" />
+		<div class="product-info">
+			<p class="product-name">@Model.Name</p>
+			<p>Артикул: @Model.Id</p>
+			<p>Цена: @Model.Price</p>
+			<div class="buttons-container">
+				<a class="product-btn btn btn-dark" href="/cart/add?productId=@Model.Id">В КОРЗИНУ</a>
+			</div>
+			<p>@Model.Description</p>
+		</div>
+	</div>
+
+
 }
