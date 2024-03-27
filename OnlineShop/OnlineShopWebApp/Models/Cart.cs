@@ -13,11 +13,20 @@
             }
         }
 
+        public int Amount
+        {
+            get
+            {
+                return Items?.Sum(x => x.Amount) ?? 0;
+            }
+        }
+
         public Cart(int userId)
         {
             UserId = userId;
         }
 
-     
+
+
     }
 }
