@@ -8,13 +8,25 @@ namespace OnlineShopWebApp.Controllers
 		private readonly ICartsStorage cartsStorage;
 		private readonly IOrdersStorage ordersStorage;
 
+		public OrderController(ICartsStorage cartsStorage, IOrdersStorage ordersStorage)
+		{
+			this.ordersStorage = ordersStorage;
+			this.cartsStorage = cartsStorage;
+		}
+
 		public IActionResult Index()
 		{
 			return View();
 		}
-		public IActionResult Buy()
+
+		[HttpPost]
+		public IActionResult Buy(Order order)
 		{
-			return View();
+			order.Cart = cartsStorage.TryGetByUserId(Constants.UserId);
+			ordersStorage.Add(order);
+			cartsStorage.ClearAll(Constants.UserId);
+			return View(order);
 		}
 	}
 }
+ 
