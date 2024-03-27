@@ -20,8 +20,6 @@ namespace OnlineShopWebApp.Controllers
 
         public IActionResult Index()
         {
-            var cart = cartsStorage.TryGetByUserId(Constants.UserId);
-            ViewBag.ProductCount = cart?.Amount;
             var products = productsStorage.GetAll();
             return View(products);
         }
