@@ -4,7 +4,13 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class LoginController : Controller
 	{
-		public IActionResult Index()
+
+		public IActionResult Login()
+		{
+			return View();
+		}
+
+		public IActionResult Registration()
 		{
 			return View();
 		}
@@ -12,12 +18,13 @@ namespace OnlineShopWebApp.Controllers
 		[HttpPost]
 		public IActionResult SignIn(string email, string password)
 		{
-			return View("Index");
+			return View("Login");
 		}
 
-		public IActionResult SignUp()
+		[HttpPost]
+		public IActionResult SignUp(string email, string password)
 		{
-			return View();
+			return View("Registration");
 		}
 	}
 }

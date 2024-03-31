@@ -1,5 +1,4 @@
-﻿
-.form-horizontal {
+﻿.form-horizontal {
     background: #fff;
     padding-bottom: 40px;
     border-radius: 15px;
@@ -9,14 +8,14 @@
 
 
 
-.form-horizontal .heading {
-    display: block;
-    font-size: 35px;
-    font-weight: 700;
-    padding: 35px 0;
-    border-bottom: 1px solid #f0f0f0;
-    margin-bottom: 30px;
-}
+    .form-horizontal .heading {
+        display: block;
+        font-size: 35px;
+        font-weight: 700;
+        padding: 35px 0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 30px;
+    }
 
     .form-horizontal .form-group {
         padding: 0 40px;
@@ -145,7 +144,7 @@
     }
 }
 
-.sign-up{
-    display:flex;
+.sign-up {
+    display: flex;
     justify-content: center;
 }
