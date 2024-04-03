@@ -23,7 +23,7 @@ namespace OnlineShopWebApp.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult SignUp(string email, string password)
+		public IActionResult SignUp(Registration registration)
 		{
 			return View("Registration");
 		}
