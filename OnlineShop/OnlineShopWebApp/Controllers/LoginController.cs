@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -16,13 +17,13 @@ namespace OnlineShopWebApp.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult SignIn(string email, string password)
+		public IActionResult SignIn(Login login)
 		{
 			return View("Login");
 		}
 
 		[HttpPost]
-		public IActionResult SignUp(string email, string password)
+		public IActionResult SignUp(Registration registration)
 		{
 			return View("Registration");
 		}
