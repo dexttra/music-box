@@ -1,55 +1,44 @@
-﻿<header>
-	<link rel="stylesheet" href="/css/order.css">
-</header>
-<form method="post">
-	<div class="box-2">
-		<div class="box-inner-2">
-			<div>
-				<p class="fw-bold">Детали оплаты</p>
-				<p class="dis mb-3">Чтобы оформить заказ заполните информацию</p>
-			</div>
-			<div>
-				<p class="dis fw-bold mb-2">ФИО</p>
-				<input type="text" name="name" class="form-control" placeholder="Имя">
-				<input type="text" name="surname" class="form-control" placeholder="Фамилия">
-			</div>
-			<div class="mb-3">
-				<p class="dis fw-bold mb-2">Email</p>
-				<input class="form-control" name="email" type="email" placeholder="Email" />
-			</div>
-			<div>
-				<p class="dis fw-bold mb-2">Данные карты</p>
-				<div class="d-flex align-items-center justify-content-between card-atm border rounded">
-					<div class="fab fa-cc-visa ps-3"></div>
-					<input type="text" class="form-control" placeholder="Номер карты">
-					<div class="d-flex w-50">
-						<input type="text" class="form-control px-0" placeholder="MM/YY">
-						<input type="password" maxlength=3 class="form-control px-0" placeholder="CVV">
-					</div>
-				</div>
-				<div class="my-3 cardname">
-					<p class="dis fw-bold mb-2">Имя владельца карты</p>
-					<input class="form-control" type="text">
-				</div>
-				<div class="address">
-					<p class="dis fw-bold mb-3">Адрес доставки</p>
-					<input type="text" name="city" class="form-control" placeholder="Город">
-					<div class="d-flex">
-						<input class="form-control street" name="street" type="text" placeholder="Улица">
-						<input class="form-control street-number" name="streetNumber" type="text" placeholder="Номер дома/кв">
-					</div>
-				</div>
-				<div class="d-flex flex-column dis">
-					<div class="d-flex align-items-center justify-content-between mb-2">
-						<p class="fw-bold">Итого</p>
-						<p class="fw-bold"><span class="fas fa-dollar-sign"></span>0</p>
-					</div>
-					<button class="btn btn-primary mt-2" type="submit" asp-controller="Order" asp-action="Buy">
-						<span class="fas fa-dollar-sign px-1">Перейти к оплате</span>
-					</button>
-					</a>
-				</div>
-			</div>
-		</div>
+﻿@model Order
+
+<h2>Оформление заказа</h2>
+
+<form class="form" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name">Имя:</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Surname">Фамилия:</label>
+        <input class="form-control" asp-for="Surname" />
+        <span asp-validation-for="Surname"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+	<div class="form-group">
+        <label asp-for="Phone">Телефон:</label>
+        <input class="form-control" asp-for="Phone" />
+		<span asp-validation-for="Phone"></span>
 	</div>
+    <div class="form-group">
+        <label asp-for="City">Город:</label>
+        <input class="form-control" asp-for="City" />
+        <span asp-validation-for="City"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Street">Улица:</label>
+        <input class="form-control" asp-for="Street" />
+        <span asp-validation-for="Street"></span>
+    </div>
+
+    <br />
+    <button asp-controller="Order" asp-action="Buy" class="btn btn-primary" type="submit">Подтвердить заказ</button>
 </form>
+
