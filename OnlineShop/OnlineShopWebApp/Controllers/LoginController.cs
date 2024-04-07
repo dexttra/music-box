@@ -29,6 +29,10 @@ namespace OnlineShopWebApp.Controllers
         [HttpPost]
         public IActionResult SignUp(Registration registration)
         {
+            if (registration.Email == registration.Password) 
+            {
+                ModelState.AddModelError("", "Логин и пароль не должны совпадать");
+            }
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Home");

@@ -1,1 +1,42 @@
-﻿
+﻿@model Login
+
+@{
+    <br />
+    ViewData["Title"] = "Вход";
+}
+
+<h2 style="text-align: center;">@ViewData["Title"]</h2>
+<br />
+
+<form class="form" asp-controller="User" asp-action="EnterUser" method="post" style="max-width: 300px; margin: 0 auto;">
+
+    <div class="form-group">
+        <label asp-for="Email">Логин:</label><br />
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Пароль:</label><br />
+        <input class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div class="form-group" style="text-align: center;">
+        <input type="checkbox" id="RememberMe" name="RememberMe" value="true" />
+        <label for="RememberMe">Запомнить меня</label>
+    </div>
+
+    <br />
+    <div style="text-align: center;">
+        <button asp-controller="Login" asp-action="SignIn" class="btn btn-primary" type="submit">Войти</button>
+    </div>
+
+    <br />
+    <div style="text-align: center;">
+        <a href="/Login/Registration" class="btn btn-secondary">Нет аккаунта? Зарегистрироваться</a>
+    </div>
+
+</form>
+
+
