@@ -1,8 +1,11 @@
-﻿<header>
+﻿@model Login
+<header>
 	<link rel="stylesheet" href="/css/login.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </header>
+
+<div class="text-danger font-weight-bold" asp-validation-summary="ModelOnly"></div>
 
 <div class="container">
 	<div class="row">
@@ -10,13 +13,14 @@
 			<form method="post" class="form-horizontal">
 				<span class="heading">АВТОРИЗАЦИЯ</span>
 				<div class="form-group">
-					<input name="email" type="email" class="form-control" id="inputEmail" placeholder="E-mail">
-					<i class="fa fa-user"></i>
+					<label asp-for="Email"></label><br />
+					<input asp-for="Email" name="email" type="email" class="form-control" id="inputEmail" placeholder="E-mail">
+					<span asp-validation-for="Email" />
 				</div>
 				<div class="form-group help">
-					<input name="password" type="password" class="form-control" id="inputPassword" placeholder="Пароль">
-					<i class="fa fa-lock"></i>
-					<a href="#" class="fa fa-question-circle"></a>
+					<label asp-for="Password"></label><br />
+					<input asp-for="Password" name="password" type="password" class="form-control" id="inputPassword" placeholder="Пароль">
+					<span asp-validation-for="Password" />
 				</div>
 				<div class="form-group">
 					<div class="main-checkbox">
@@ -28,8 +32,9 @@
 				</div>
 				<div class="sign-up">
 					<button class="btn btn-default" asp-controller="Login" asp-action="Registration">Нет аккаунта? Зарегистрироваться</button>
-				</div>		
+				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
