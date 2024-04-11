@@ -26,20 +26,20 @@
 		}
 		public void EditProduct(Product product)
 		{
-			var existingProduct = TryGetById(product.Id);  
-			if (existingProduct == null) 
+			var existingProduct = TryGetById(product.Id);
+			if (existingProduct == null)
 			{
 				return;
 			}
 			existingProduct.Name = product.Name;
 			existingProduct.Description = product.Description;
 			existingProduct.Price = product.Price;
+			existingProduct.ImagePath = product.ImagePath;
 		}
 
 		public void AddProduct(Product product)
 		{
-			product.ImagePath = "/images/image1";
-			products.Add(product);				  
+			products.Add(product);
 		}
 	}
 }

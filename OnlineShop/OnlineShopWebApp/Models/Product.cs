@@ -5,7 +5,7 @@ namespace OnlineShopWebApp.Models
 	public class Product
 	{
 		private static int uniqId = 1;
-		public int Id { get; }
+		public int Id { get; set; }
 
 		[Required(ErrorMessage = "Укажите название")]
 		public string Name { get; set; }
@@ -15,10 +15,11 @@ namespace OnlineShopWebApp.Models
 		[Required(ErrorMessage = "Укажите описание")]
 		public string Description { get; set; }
 
+		[Required(ErrorMessage = "Укажите ссылку на изображение")]
 		public string ImagePath { get; set; }
 
 
-		public Product() 
+		public Product()
 		{
 			Id = uniqId++;
 		}
@@ -31,7 +32,7 @@ namespace OnlineShopWebApp.Models
 			ImagePath = imagePath;
 		}
 
-		
+
 
 	}
 }
