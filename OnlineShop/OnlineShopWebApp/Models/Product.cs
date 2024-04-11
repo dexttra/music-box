@@ -1,26 +1,37 @@
-﻿namespace OnlineShopWebApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OnlineShopWebApp.Models
 {
-    public class Product
-    {
-        private static int uniqId;
-        public int Id { get; }
-        public string Name { get; private set; }
-        public decimal Price { get; private set; }
-        public string Description { get; private set; }
+	public class Product
+	{
+		private static int uniqId = 1;
+		public int Id { get; }
 
-        public string ImagePath {  get; private set; } 
+		[Required(ErrorMessage = "Укажите название")]
+		public string Name { get; set; }
 
-        public Product(string name, decimal price, string description, string imagePath)
-        {
-            Id = uniqId++;
-            Name = name;
-            Price = price;
-            Description = description;
-            ImagePath = imagePath;
-        }
-        public override string ToString() 
-        {
-            return $"{Id} \n {Name} \n {Price} \n {Description}";
-        }
-    }
+		[Required(ErrorMessage = "Укажите стоимость")]
+		public decimal Price { get; set; }
+		[Required(ErrorMessage = "Укажите описание")]
+		public string Description { get; set; }
+
+		public string ImagePath { get; set; }
+
+
+		public Product() 
+		{
+			Id = uniqId++;
+		}
+
+		public Product(string name, decimal price, string description, string imagePath) : this()
+		{
+			Name = name;
+			Price = price;
+			Description = description;
+			ImagePath = imagePath;
+		}
+
+		
+
+	}
 }
