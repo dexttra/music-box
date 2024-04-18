@@ -4,38 +4,27 @@ namespace OnlineShopWebApp.Models
 {
 	public class Order
 	{
+		private static int uniqId = 1;
 		public int Id { get; }
-		private static int uniqId = 0;
-        [Required(ErrorMessage = "Заполните поле")]
-        public string Name { get; set; }
-        [Required(ErrorMessage = "Заполните поле")]
-        public string Surname { get; set; }
 
-		[EmailAddress]
-        [Required(ErrorMessage = "Заполните поле")]
-        public string Email { get; set; }
-        [Required(ErrorMessage = "Заполните поле")]
-        public string Phone { get; set; }
-        [Required(ErrorMessage = "Заполните поле")]
-        public string City { get; set; }
-        [Required(ErrorMessage = "Заполните поле")]
-        public string Street { get; set; } 
+		public UserOrderInfo UserOrderInfo;
 		public Cart Cart { get; set; }
+		public OrderStatus OrderStatus { get; set; }
+		public DateTime CreationTime { get; set; }
+		public decimal Price { get; set; }
 
-		public Order(string name, string surname, string email, string phone, string city, string street, Cart cart)
+
+		public Order(UserOrderInfo userOrderInfo, Cart cart)
 		{
 			Id = uniqId++;
-			Name = name;
-			Surname = surname;
-			Email = email;
-			Phone = phone;
-			City = city;
-			Street = street;
+			UserOrderInfo = userOrderInfo;
 			Cart = cart;
+			OrderStatus = OrderStatus.Created;
+			CreationTime = DateTime.Now;
+			Price = Cart.Price;
 		}
-
 		public Order()
-		{
+		{		
 		}
 	}
 }

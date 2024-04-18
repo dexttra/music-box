@@ -3,5 +3,7 @@
     public interface IOrdersStorage
     {
         void Add(Order order);
+        
+        List<Order> GetAll();
     }
 }

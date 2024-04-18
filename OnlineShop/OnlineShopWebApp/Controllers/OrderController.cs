@@ -20,13 +20,18 @@ namespace OnlineShopWebApp.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Buy(Order order)
+		public IActionResult Buy(UserOrderInfo userInfo)
 		{
-			order.Cart = cartsStorage.TryGetByUserId(Constants.UserId);
-			ordersStorage.Add(order);
-			cartsStorage.ClearAll(Constants.UserId);
-			return View(order);
+			if (ModelState.IsValid)
+			{
+				Cart cart = cartsStorage.TryGetByUserId(Constants.UserId);
+				Order order = new Order(userInfo, cart);
+				
+				ordersStorage.Add(order);
+				cartsStorage.ClearAll(Constants.UserId);
+				return View();
+			}
+			return View("Index");
 		}
 	}
 }
- 
