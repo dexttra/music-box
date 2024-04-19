@@ -1,4 +1,5 @@
-﻿@model List<Order>
+﻿@model Order
+
 
 <header>
 	<link rel="stylesheet" href="/css/admin.css">
@@ -19,21 +20,22 @@
 					<th>Статус</th>
 					<th>Дата</th>
 					<th>Время</th>
-					<th>Подробнее</th>
 				</tr>
 			</thread>
 			<tbody>
-				@for (int i = 0; i < Model.Count; i++)
-				{
-					<tr>
-						<td>@Model[i].Id</td>
-						<td>@Model[i].Price</td>
-						<td>@Model[i].OrderStatus</td>
-						<td>@Model[i].CreationTime.ToString("d")</td>
-						<td>@Model[i].CreationTime.ToString("t")</td>
-						<td><a href="/admin/orderDetails?orderId=@Model[i].Id">Подробнее</a></td>
-					</tr>
-				}
+				<tr>
+					<td>@Model.Id</td>
+					<td>@Model.Price</td>
+					<td>
+						<select asp-for="OrderStatus"
+								asp-items="@Html.GetEnumSelectList<OrderStatus>()"
+								class="form-control">
+						</select>
+					</td>
+					<td>@Model.CreationTime.ToString("d")</td>
+					<td>@Model.CreationTime.ToString("t")</td>
+				
+				</tr>
 			</tbody>
 		</table>
 	</div>

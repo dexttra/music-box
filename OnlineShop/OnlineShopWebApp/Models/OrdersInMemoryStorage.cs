@@ -17,5 +17,10 @@ namespace OnlineShopWebApp.Models
         {
             return orders;
         }
-    }
+
+		public Order TryGetById(int orderId)
+		{
+            return orders.FirstOrDefault(order => order.Id == orderId);
+		}
+	}
 }

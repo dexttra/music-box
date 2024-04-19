@@ -5,7 +5,7 @@ namespace OnlineShopWebApp.Models
 	public class Order
 	{
 		private static int uniqId = 1;
-		public int Id { get; }
+		public int Id { get;  }
 
 		public UserOrderInfo UserOrderInfo;
 		public Cart Cart { get; set; }

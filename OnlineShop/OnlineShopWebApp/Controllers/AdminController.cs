@@ -72,7 +72,12 @@ namespace OnlineShopWebApp.Controllers
 				return RedirectToAction("Products");
 			}
 			return RedirectToAction("EditProduct");
+		}
 
+		public ActionResult OrderDetails(int orderId)
+		{
+			var order = ordersStorage.TryGetById(orderId);
+			return View(order);
 		}
 
 	}
