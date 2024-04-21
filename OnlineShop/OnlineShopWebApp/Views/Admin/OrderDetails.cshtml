@@ -5,39 +5,50 @@
 	<link rel="stylesheet" href="/css/admin.css">
 </header>
 
-<h1>Список заказов</h1>
 @await Html.PartialAsync("AdminPanel")
 <div class="row">
 	<div class="col-9">
-		<h3>Список заказов</h3>
+		<h3>Информация о заказе</h3>
 	</div>
 	<div class="row">
-		<table class="table">
-			<thread>
+		<form method="post">
+			<table class="table">
+
+				<input type="hidden" name="orderId" value="@Model.Id" />
+
 				<tr>
-					<th>ID</th>
-					<th>Сумма</th>
-					<th>Статус</th>
-					<th>Дата</th>
-					<th>Время</th>
-				</tr>
-			</thread>
-			<tbody>
-				<tr>
+					<td>ID</td>
 					<td>@Model.Id</td>
+				<tr>
+
+				<tr>
+					<td>Сумма</td>
 					<td>@Model.Price</td>
+				<tr>
+
+				<tr>
+					<td>Статус</td>
 					<td>
-						<select asp-for="OrderStatus"
+						<select name="newStatus"
+								asp-for="@Model.OrderStatus"
 								asp-items="@Html.GetEnumSelectList<OrderStatus>()"
 								class="form-control">
 						</select>
 					</td>
+				<tr>
+
+				<tr>
+					<td>Дата</td>
 					<td>@Model.CreationTime.ToString("d")</td>
+				<tr>
+
+				<tr>
+					<td>Время</td>
 					<td>@Model.CreationTime.ToString("t")</td>
-				
-				</tr>
-			</tbody>
-		</table>
+				<tr>
+			</table>
+			<button class="btn btn-success" type="submit" asp-controller="Admin" asp-action="UpdateStatus">Обновить статус</button>
+		</form>
 	</div>
 </div>
 

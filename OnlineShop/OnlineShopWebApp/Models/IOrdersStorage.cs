@@ -6,5 +6,6 @@
         
         List<Order> GetAll();
 		Order TryGetById(int orderId);
+		void UpdateStatus(int orderId, OrderStatus newStatus);
 	}
 }

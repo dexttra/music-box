@@ -28,7 +28,7 @@
 					<tr>
 						<td>@Model[i].Id</td>
 						<td>@Model[i].Price</td>
-						<td>@Model[i].OrderStatus</td>
+						<td>@EnumHelper.GetDisplayName(Model[i].OrderStatus)</td>
 						<td>@Model[i].CreationTime.ToString("d")</td>
 						<td>@Model[i].CreationTime.ToString("t")</td>
 						<td><a href="/admin/orderDetails?orderId=@Model[i].Id">Подробнее</a></td>

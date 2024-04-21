@@ -24,7 +24,7 @@ namespace OnlineShopWebApp.Controllers
 			return View(orders);
 		}
 
-	
+
 		public IActionResult Users()
 		{
 			return View();
@@ -52,7 +52,7 @@ namespace OnlineShopWebApp.Controllers
 			{
 				productsStorage.AddProduct(product);
 				return RedirectToAction("Products");
-			}			
+			}
 			return View("AddProduct");
 
 		}
@@ -78,6 +78,14 @@ namespace OnlineShopWebApp.Controllers
 		{
 			var order = ordersStorage.TryGetById(orderId);
 			return View(order);
+		}
+
+		[HttpPost]
+		public ActionResult UpdateStatus(int orderId, OrderStatus newStatus) 
+		{
+			ordersStorage.UpdateStatus(orderId, newStatus);
+			return RedirectToAction("Orders");
+
 		}
 
 	}
