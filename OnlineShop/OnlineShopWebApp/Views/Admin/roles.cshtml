@@ -1,7 +1,37 @@
-﻿<header>
+﻿@model List<Role>
+
+<header>
 	<link rel="stylesheet" href="/css/admin.css">
 </header>
 
-<h1>Список ролей</h1>
-
 @await Html.PartialAsync("AdminPanel")
+<div class="row">
+	<div class="col-9">
+		<h3>Список ролей</h3>
+	</div>
+	<div class="row">
+		<table class="table">
+			<thread>
+				<tr>
+					<th>#</th>
+					<th>Название</th>
+					<th></th>
+				</tr>
+			</thread>
+			<tbody>
+				@for (int i = 0; i < Model.Count; i++)
+				{
+					<tr>
+						<td>@(i + 1)</td>
+						<td>@Model[i].Name</td>
+						<td><a href="/admin/removeRole?roleName=@Model[i].Name">Удалить</a></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+
+<a href="/admin/addRole/" class="btn btn-success">Добавить роль</a>

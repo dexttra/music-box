@@ -7,11 +7,13 @@ namespace OnlineShopWebApp.Controllers
 	{
 		private readonly IProductsStorage productsStorage;
 		private readonly IOrdersStorage ordersStorage;
+		private readonly IRolesStorage rolesStorage;
 
-		public AdminController(IProductsStorage productsStorage, IOrdersStorage ordersStorage)
+		public AdminController(IProductsStorage productsStorage, IOrdersStorage ordersStorage, IRolesStorage rolesStorage)
 		{
 			this.productsStorage = productsStorage;
 			this.ordersStorage = ordersStorage;
+			this.rolesStorage = rolesStorage;
 		}
 
 		public IActionResult Index()
@@ -31,7 +33,33 @@ namespace OnlineShopWebApp.Controllers
 		}
 		public IActionResult Roles()
 		{
-			return View();
+			var roles = rolesStorage.GetAll();
+			return View(roles);
+		}
+
+		public IActionResult AddRole()
+		{
+			return View();	
+		}
+
+		[HttpPost]
+		public IActionResult AddRole(Role role)
+		{
+			if (rolesStorage.TryGetByName(role.Name) is not null)
+			{
+				ModelState.AddModelError("Name", "Такая роль уже существует");
+			}	
+			if (ModelState.IsValid)
+			{
+				rolesStorage.AddRole(role);
+				return RedirectToAction("Roles");
+			}
+			return View(role);
+		}
+		public IActionResult RemoveRole(string roleName)
+		{
+			rolesStorage.RemoveRole(roleName);
+			return RedirectToAction("Roles");
 		}
 		public IActionResult Products()
 		{
