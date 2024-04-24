@@ -13,13 +13,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			this.productsStorage = productsStorage;
 		}
 
-		public IActionResult Users()
-		{
-			return View();
-		}
-
-
-		public IActionResult Products()
+		public IActionResult Index()
 		{
 			var products = productsStorage.GetAll();
 			return View(products);
