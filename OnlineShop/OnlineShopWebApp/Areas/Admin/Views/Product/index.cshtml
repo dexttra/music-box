@@ -11,8 +11,8 @@
 		<h3>Список продуктов</h3>
 	</div>
 	<a asp-area="Admin"
-	   asp-controller="Admin"
-	   asp-action="AddProduct">Добавить товар</a>
+	   asp-controller="Product"
+	   asp-action="Add">Добавить товар</a>
 
 	<div class="row">
 		<table class="table">
@@ -34,8 +34,8 @@
 						<td>@Model[i].Price</td>
 						<td>
 							<a asp-area="Admin"
-							   asp-controller="Products"
-							   asp-action="AddProduct"
+							   asp-controller="Product"
+							   asp-action="Add"
 							   asp-route-productId="@Model[i].Id">Изменить</a>
 						</td>
 						<td><a href="#">Удалить</a></td>

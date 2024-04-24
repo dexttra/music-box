@@ -24,7 +24,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult AddRole(Role role)
+		public IActionResult Add(Role role)
 		{
 			if (rolesStorage.TryGetByName(role.Name) is not null)
 			{
@@ -33,14 +33,14 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			if (ModelState.IsValid)
 			{
 				rolesStorage.AddRole(role);
-				return RedirectToAction("Roles");
+				return RedirectToAction("Index");
 			}
 			return View(role);
 		}
 		public IActionResult RemoveRole(string roleName)
 		{
 			rolesStorage.RemoveRole(roleName);
-			return RedirectToAction("Roles");
+			return RedirectToAction("Index");
 		}
 	}
 }

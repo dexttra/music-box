@@ -19,7 +19,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			return View(orders);
 		}
 
-		public ActionResult OrderDetails(int orderId)
+		public ActionResult Details(int orderId)
 		{
 			var order = ordersStorage.TryGetById(orderId);
 			return View(order);
@@ -29,7 +29,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 		public ActionResult UpdateStatus(int orderId, OrderStatus newStatus)
 		{
 			ordersStorage.UpdateStatus(orderId, newStatus);
-			return RedirectToAction("Orders");
+			return RedirectToAction("Index");
 
 		}
 

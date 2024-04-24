@@ -35,7 +35,8 @@
 	<div style="text-align: center;">
 		<button asp-area="Admin"
 				asp-controller="Product"
-				asp-action="EditProduct"
+				asp-action="Edit"
+				asp-route-id="@Model.Id"
 				type="submit" class="btn btn-primary">
 			Редактировать продукт
 		</button>

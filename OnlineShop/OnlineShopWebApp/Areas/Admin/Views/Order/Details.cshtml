@@ -11,7 +11,7 @@
 		<h3>Информация о заказе</h3>
 	</div>
 	<div class="row">
-		<form method="post">
+		<form asp-action="UpdateStatus" method="post">
 			<table class="table">
 
 				<input type="hidden" name="orderId" value="@Model.Id" />
@@ -47,10 +47,7 @@
 					<td>@Model.CreationTime.ToString("t")</td>
 				<tr>
 			</table>
-			<button class="btn btn-success" type="submit"
-					asp-area="Admin"
-					asp-controller="Order"
-					asp-action="UpdateStatus">
+			<button class="btn btn-success" type="submit">
 				Обновить статус
 			</button>
 		</form>

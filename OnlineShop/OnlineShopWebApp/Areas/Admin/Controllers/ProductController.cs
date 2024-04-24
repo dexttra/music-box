@@ -19,24 +19,24 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			return View(products);
 		}
 
-		public IActionResult AddProduct()
+		public IActionResult Add()
 		{
 			return View();
 		}
 
 
 		[HttpPost]
-		public IActionResult AddProduct(Product product)
+		public IActionResult Add(Product product)
 		{
 			if (ModelState.IsValid)
 			{
 				productsStorage.AddProduct(product);
-				return RedirectToAction("Products");
+				return RedirectToAction("Index");
 			}
-			return View("AddProduct");
+			return View("Add");
 
 		}
-		public IActionResult EditProduct(int productId)
+		public IActionResult Edit(int productId)
 		{
 			var product = productsStorage.TryGetById(productId);
 			return View(product);
@@ -44,14 +44,14 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
 
 		[HttpPost]
-		public IActionResult EditProduct(Product product)
+		public IActionResult Edit(Product product)
 		{
 			if (ModelState.IsValid)
 			{
 				productsStorage.EditProduct(product);
-				return RedirectToAction("Products");
+				return RedirectToAction("Index");
 			}
-			return RedirectToAction("EditProduct");
+			return RedirectToAction("Edit");
 		}
 
 
