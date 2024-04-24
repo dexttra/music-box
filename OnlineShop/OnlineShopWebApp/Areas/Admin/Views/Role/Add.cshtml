@@ -1,7 +1,7 @@
 ﻿@model Role
 
 <h2 style="text-align: center;">Добавление роли</h2>
-<form class="form" method="post" style="max-width: 300px; margin: 0 auto;">
+<form asp-action="Add" class="form" method="post" style="max-width: 300px; margin: 0 auto;">
 
 	<div class="form-group">
 		<label asp-for="Name">Название</label><br />
@@ -11,10 +11,7 @@
 
 	<div style="text-align: center;">
 	</div>
-	<button asp-area="Admin"
-			asp-controller="Role"
-			asp-action="AddRole"
-			type="submit" class="btn btn-primary">
+	<button type="submit" class="btn btn-primary">
 		Создать роль
 	</button>
 </form>

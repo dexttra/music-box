@@ -18,7 +18,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			var roles = rolesStorage.GetAll();
 			return View(roles);
 		}
-		public IActionResult AddRole()
+		public IActionResult Add()
 		{
 			return View();
 		}
