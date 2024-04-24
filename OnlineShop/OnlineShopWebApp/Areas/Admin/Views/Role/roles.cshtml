@@ -24,7 +24,12 @@
 					<tr>
 						<td>@(i + 1)</td>
 						<td>@Model[i].Name</td>
-						<td><a href="/admin/removeRole?roleName=@Model[i].Name">Удалить</a></td>
+						<td>
+							<a asp-area="Admin"
+							   asp-controller="Admin"
+							   asp-action="removeRole"
+							   asp-route-roleName="@Model[i].Name">Удалить</a>
+						</td>
 					</tr>
 				}
 			</tbody>
@@ -33,5 +38,7 @@
 
 </div>
 
-
-<a href="/admin/addRole/" class="btn btn-success">Добавить роль</a>
+<a asp-area="Admin"
+   asp-controller="Admin"
+   asp-action="AddRole"
+   class="btn btn-success">Добавить роль</a>

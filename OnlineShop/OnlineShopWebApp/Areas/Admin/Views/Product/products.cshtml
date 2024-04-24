@@ -10,7 +10,9 @@
 	<div class="col-9">
 		<h3>Список продуктов</h3>
 	</div>
-	<a asp-controller="Admin" asp-action="AddProduct">Добавить товар</a>
+	<a asp-area="Admin"
+	   asp-controller="Admin"
+	   asp-action="AddProduct">Добавить товар</a>
 
 	<div class="row">
 		<table class="table">
@@ -30,7 +32,12 @@
 						<td>@Model[i].Id</td>
 						<td>@Model[i].Name</td>
 						<td>@Model[i].Price</td>
-						<td><a href="/Admin/EditProduct?productId=@Model[i].Id">Изменить</a></td>
+						<td>
+							<a asp-area="Admin"
+							   asp-controller="Admin"
+							   asp-action="AddProduct"
+							   asp-route-productId="@Model[i].Id">Изменить</a>
+						</td>
 						<td><a href="#">Удалить</a></td>
 					</tr>
 				}

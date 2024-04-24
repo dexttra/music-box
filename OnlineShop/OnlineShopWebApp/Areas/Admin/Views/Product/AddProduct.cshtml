@@ -29,6 +29,11 @@
 
 	<br />
 	<div style="text-align: center;">
-		<button asp-controller="Admin" asp-action="AddProduct" type="submit" class="btn btn-primary">Добавить продукт</button>
+		<button asp-area="Admin"
+				asp-controller="Admin"
+				asp-action="AddProduct"
+				type="submit" class="btn btn-primary">
+			Добавить продукт
+		</button>
 	</div>
 </form>

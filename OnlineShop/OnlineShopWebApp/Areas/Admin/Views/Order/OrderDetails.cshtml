@@ -47,7 +47,11 @@
 					<td>@Model.CreationTime.ToString("t")</td>
 				<tr>
 			</table>
-			<button class="btn btn-success" type="submit" asp-controller="Admin" asp-action="UpdateStatus">Обновить статус</button>
+			<button class="btn btn-success" type="submit" asp-area="Admin"
+					asp-controller="Admin"
+					asp-action="UpdateStatus">
+				Обновить статус
+			</button>
 		</form>
 	</div>
 </div>
