@@ -3,10 +3,9 @@
 <h2 style="text-align: center;">Редактирование продукта</h2>
 
 
-<form class="form" method="post" style="max-width: 300px; margin: 0 auto;">
+<form asp-action="Edit" class="form" method="post" style="max-width: 300px; margin: 0 auto;">
 
-
-	<input type="hidden" asp-for="Id" />
+	<input type="hidden" asp-for="Id" value="@Model.Id" />
 
 	<div class="form-group">
 		<label asp-for="Name">Название</label><br />
@@ -34,11 +33,7 @@
 
 	<br />
 	<div style="text-align: center;">
-		<button asp-area="Admin"
-				asp-controller="Product"
-				asp-action="Edit"
-				asp-route-id="@Model.Id"
-				type="submit" class="btn btn-primary">
+		<button type="submit" class="btn btn-primary">
 			Редактировать продукт
 		</button>
 	</div>
