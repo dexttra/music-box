@@ -26,7 +26,7 @@
 						<td>@Model[i].Name</td>
 						<td>
 							<a asp-area="Admin"
-							   asp-controller="Admin"
+							   asp-controller="Role"
 							   asp-action="removeRole"
 							   asp-route-roleName="@Model[i].Name">Удалить</a>
 						</td>
@@ -39,6 +39,6 @@
 </div>
 
 <a asp-area="Admin"
-   asp-controller="Admin"
+   asp-controller="Role"
    asp-action="AddRole"
    class="btn btn-success">Добавить роль</a>

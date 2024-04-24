@@ -4,15 +4,19 @@ using OnlineShopWebApp.Models;
 namespace OnlineShopWebApp.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	public class RolesController : Controller
+	public class RoleController : Controller
 	{
 		private readonly IRolesStorage rolesStorage;
 
-		public RolesController(IProductsStorage productsStorage)
+		public RoleController(IRolesStorage rolesStorage)
 		{
 			this.rolesStorage = rolesStorage;
 		}
 
+		public IActionResult Index()
+		{
+		
+		}
 		public IActionResult AddRole()
 		{
 			return View();
