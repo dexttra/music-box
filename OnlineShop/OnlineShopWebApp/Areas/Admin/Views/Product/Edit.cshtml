@@ -5,7 +5,8 @@
 
 <form class="form" method="post" style="max-width: 300px; margin: 0 auto;">
 
-	<input type="hidden" name="Id" value="@Model.Id" />
+
+	<input type="hidden" asp-for="Id" />
 
 	<div class="form-group">
 		<label asp-for="Name">Название</label><br />
