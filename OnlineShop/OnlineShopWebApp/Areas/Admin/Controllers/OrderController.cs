@@ -3,6 +3,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Areas.Admin.Controllers
 {
+	[Area("Admin")]
 	public class OrderController : Controller
 	{
 		private readonly IOrdersStorage ordersStorage;
@@ -12,7 +13,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			this.ordersStorage = ordersStorage;
 		}
 
-		public IActionResult Orders()
+		public IActionResult Index()
 		{
 			var orders = ordersStorage.GetAll();
 			return View(orders);

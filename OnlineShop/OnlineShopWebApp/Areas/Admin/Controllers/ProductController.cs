@@ -3,6 +3,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Areas.Admin.Controllers
 {
+	[Area("Admin")]
 	public class ProductController : Controller
 	{
 		private readonly IProductsStorage productsStorage;
