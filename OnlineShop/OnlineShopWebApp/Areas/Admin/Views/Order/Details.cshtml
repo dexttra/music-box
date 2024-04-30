@@ -1,4 +1,4 @@
-﻿@model User
+﻿@model Order
 
 
 <header>
@@ -8,34 +8,49 @@
 @await Html.PartialAsync("AdminPanel")
 <div class="row">
 	<div class="col-9">
-		<h3>Информация о пользователе/h3>
+		<h3>Информация о заказе</h3>
 	</div>
 	<div class="row">
+		<form asp-action="UpdateStatus" method="post">
+			<table class="table">
 
-		<table class="table">
+				<input type="hidden" name="orderId" value="@Model.Id" />
 
+				<tr>
+					<td>ID</td>
+					<td>@Model.Id</td>
+				<tr>
 
-			<tr>
-				<td>ID</td>
-				<td>@Model.Id</td>
-			<tr>
+				<tr>
+					<td>Сумма</td>
+					<td>@Model.Price</td>
+				<tr>
 
-			<tr>
-				<td>Email</td>
-				<td>@Model.Name</td>
-			<tr>
+				<tr>
+					<td>Статус</td>
+					<td>
+						<select name="newStatus"
+								asp-for="@Model.OrderStatus"
+								asp-items="@Html.GetEnumSelectList<OrderStatus>()"
+								class="form-control">
+						</select>
+					</td>
+				<tr>
 
-		</table>
+				<tr>
+					<td>Дата</td>
+					<td>@Model.CreationTime.ToString("d")</td>
+				<tr>
 
-		<button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Действия
-		</button>
-		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-id="@Model.Name"> Смена пароля</a>
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-id="@Model.Name"> Редактирование</a>
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-id="@Model.Name"> Права доступа</a>
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-id="@Model.Name"> Удалить</a>
-		</div>
+				<tr>
+					<td>Время</td>
+					<td>@Model.CreationTime.ToString("t")</td>
+				<tr>
+			</table>
+			<button class="btn btn-success" type="submit">
+				Обновить статус
+			</button>
+		</form>
 	</div>
 </div>
 
