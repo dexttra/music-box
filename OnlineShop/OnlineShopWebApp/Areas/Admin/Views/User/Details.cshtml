@@ -1,0 +1,31 @@
+﻿@model User
+
+
+<header>
+	<link rel="stylesheet" href="/css/admin.css">
+</header>
+
+@await Html.PartialAsync("AdminPanel")
+<div class="row">
+	<div class="col-9">
+		<h3>Информация о пользователе</h3>
+	</div>
+	<div class="row">
+		<form asp-action="UpdateStatus" method="post">
+			<table class="table">
+
+				<input type="hidden" name="orderId" value="@Model.Id" />
+
+				<tr>
+					<td>ID</td>
+					<td>@Model.Id</td>
+				<tr>
+
+				<tr>
+					<td>Логин</td>
+					<td>@Model.Name</td>
+				<tr>
+		</form>
+	</div>
+</div>
+
