@@ -51,7 +51,13 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 				return RedirectToAction("Index");
 			}
 			return View();
-
 		}
+
+		public IActionResult Delete(string name)
+		{
+			usersManager.Delete(name);
+			return RedirectToAction("Index");
+		}
+
 	}
 }

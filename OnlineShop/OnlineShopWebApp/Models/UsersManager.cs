@@ -1,4 +1,6 @@
-﻿namespace OnlineShopWebApp.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace OnlineShopWebApp.Models
 {
 	public class UsersManager : IUsersManager
 	{
@@ -23,6 +25,12 @@
 		{
 			var user = TryGetByName(userName);
 			user.Password = newPassword;
+		}
+
+		public void Delete(string name)
+		{
+			var user = TryGetByName(name);
+			users.Remove(user);
 		}
 	}
 }
