@@ -1,41 +1,37 @@
 ﻿@model User
 
-
 <header>
 	<link rel="stylesheet" href="/css/admin.css">
 </header>
 
-@await Html.PartialAsync("AdminPanel")
-<div class="row">
-	<div class="col-9">
-		<h3>Информация о пользователе/h3>
-	</div>
+<form method="post">
 	<div class="row">
+		@await Html.PartialAsync("AdminPanel")
+		<div class="col-1"></div>
+		<div class="col-9">
+			<h4>Информация о пользователе<h4>
+					<br />
+					<table class="table">
 
-		<table class="table">
+						<tr>
+							<th>ID</th>
+							<td>@Model.Id</td>
+						</tr>
+						<tr>
+							<th>Email:</th>
+							<td>@Model.Name</td>
+						</tr>
 
 
-			<tr>
-				<td>ID</td>
-				<td>@Model.Id</td>
-			<tr>
-
-			<tr>
-				<td>Email</td>
-				<td>@Model.Name</td>
-			<tr>
-
-		</table>
-
-		<button class="btn btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Действия
-		</button>
-		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-id="@Model.Name"> Смена пароля</a>
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-id="@Model.Name"> Редактирование</a>
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditRights" asp-route-id="@Model.Name"> Права доступа</a>
-			<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-id="@Model.Name"> Удалить</a>
+					</table>
+					<br />
+					<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Действия</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-name="@Model.Name">Смена пароля</a></li>
+						<li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-name="@Model.Name">Редактирование данных</a></li>
+						<li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangeAccess" asp-route-name="@Model.Name">Права доступа</a></li>
+						<li><a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-name="@Model.Name">Удалить</a></li>
+					</ul>
 		</div>
 	</div>
-</div>
-
+</form>

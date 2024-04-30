@@ -17,7 +17,9 @@ namespace OnlineShopWebApp.Models
 			Password = password;
 		}
 
-
+		public User()
+		{
+		}
 
 	}
 }

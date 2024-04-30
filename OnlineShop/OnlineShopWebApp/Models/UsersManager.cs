@@ -18,5 +18,11 @@
 		{
 			return users.FirstOrDefault(user => user.Name == name);
 		}
+
+		public void ChangePassword(string userName, string newPassword)
+		{
+			var user = TryGetByName(userName);
+			user.Password = newPassword;
+		}
 	}
 }
