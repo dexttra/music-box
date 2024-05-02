@@ -14,10 +14,5 @@ namespace OnlineShopWebApp.Models
 		[Compare("Password", ErrorMessage = "Пароли не совпадают")]
 		public string ConfirmPassword { get; set; }
 
-
-		public ChangeUserPassword()
-		{
-
-		}
 	}
 }
