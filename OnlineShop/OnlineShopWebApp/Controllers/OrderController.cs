@@ -5,10 +5,10 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class OrderController : Controller
 	{
-		private readonly ICartsStorage cartsStorage;
+		private readonly ICartsRepository cartsStorage;
 		private readonly IOrdersStorage ordersStorage;
 
-		public OrderController(ICartsStorage cartsStorage, IOrdersStorage ordersStorage)
+		public OrderController(ICartsRepository cartsStorage, IOrdersStorage ordersStorage)
 		{
 			this.ordersStorage = ordersStorage;
 			this.cartsStorage = cartsStorage;
@@ -24,7 +24,7 @@ namespace OnlineShopWebApp.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				Cart cart = cartsStorage.TryGetByUserId(Constants.UserId);
+				CartViewModel cart = cartsStorage.TryGetByUserId(Constants.UserId);
 				Order order = new Order(userInfo, cart);
 				
 				ordersStorage.Add(order);

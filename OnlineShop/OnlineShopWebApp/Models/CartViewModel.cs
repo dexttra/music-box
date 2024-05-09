@@ -1,9 +1,9 @@
 ﻿namespace OnlineShopWebApp.Models
 {
-    public class Cart
+    public class CartViewModel
     {
         public Guid UserId { get; }
-        public List<CartItem> Items { get; set; } = new List<CartItem>();
+        public List<CartItemViewModel> Items { get; set; } = new List<CartItemViewModel>();
 
         public decimal Price
         {
@@ -21,7 +21,7 @@
             }
         }
 
-        public Cart(Guid userId)
+        public CartViewModel(Guid userId)
         {
             UserId = userId;
         }

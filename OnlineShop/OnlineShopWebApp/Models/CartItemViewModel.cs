@@ -1,15 +1,15 @@
 ﻿namespace OnlineShopWebApp.Models
 {
-    public class CartItem
+    public class CartItemViewModel
     {
         private static int uniqId;
-        public int Id { get; }
+        public Guid Id { get; }
         public ProductViewModel Product { get; set; }
         public int Amount { get; set; }
         
-        public CartItem(ProductViewModel product, int amount)
+        public CartItemViewModel(ProductViewModel product, int amount)
         {
-            Id = uniqId++;
+            Id = new Guid();
             Product = product;
             Amount = amount;
         }

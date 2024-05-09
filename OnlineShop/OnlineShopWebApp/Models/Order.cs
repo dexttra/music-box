@@ -8,13 +8,13 @@ namespace OnlineShopWebApp.Models
 		public int Id { get;  }
 
 		public UserOrderInfo UserOrderInfo;
-		public Cart Cart { get; set; }
+		public CartViewModel Cart { get; set; }
 		public OrderStatus OrderStatus { get; set; }
 		public DateTime CreationTime { get; set; }
 		public decimal Price { get; set; }
 
 
-		public Order(UserOrderInfo userOrderInfo, Cart cart)
+		public Order(UserOrderInfo userOrderInfo, CartViewModel cart)
 		{
 			Id = uniqId++;
 			UserOrderInfo = userOrderInfo;

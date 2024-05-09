@@ -5,9 +5,9 @@ namespace OnlineShopWebApp.Views.Shared.ViewComponents.CartViewComponents
 {
     public class CartViewComponent : ViewComponent
     {
-        private readonly ICartsStorage cartsStorage;
+        private readonly ICartsRepository cartsStorage;
 
-        public CartViewComponent(ICartsStorage cartsStorage)
+        public CartViewComponent(ICartsRepository cartsStorage)
         {
             this.cartsStorage = cartsStorage;
         }
