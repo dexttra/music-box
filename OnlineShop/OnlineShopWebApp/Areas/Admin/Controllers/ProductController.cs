@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
+using OnlineShop.Db.Models;
 using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Areas.Admin.Controllers
@@ -6,9 +8,9 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 	[Area("Admin")]
 	public class ProductController : Controller
 	{
-		private readonly IProductsStorage productsStorage;
+		private readonly IProductsRepository productsStorage;
 
-		public ProductController(IProductsStorage productsStorage)
+		public ProductController(IProductsRepository productsStorage)
 		{
 			this.productsStorage = productsStorage;
 		}
@@ -16,7 +18,20 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 		public IActionResult Index()
 		{
 			var products = productsStorage.GetAll();
-			return View(products);
+			var productsViewModel = new List<ProductViewModel>();
+			foreach (var product in products)
+			{
+				var productViewModel = new ProductViewModel
+				{
+					Id = product.Id,
+					Name = product.Name,
+					Description = product.Description,
+					Price = product.Price,
+					ImagePath = product.ImagePath
+				};
+				productsViewModel.Add(productViewModel);
+			}
+			return View(productsViewModel);
 		}
 
 		public IActionResult Add()
@@ -26,17 +41,24 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
 
 		[HttpPost]
-		public IActionResult Add(Product product)
+		public IActionResult Add(ProductViewModel product)
 		{
 			if (ModelState.IsValid)
 			{
-				productsStorage.AddProduct(product);
+				var productDb = new Product
+				{
+					Name = product.Name,
+					Price = product.Price,
+					Description = product.Description,
+					ImagePath = product.ImagePath
+				};
+				productsStorage.AddProduct(productDb);
 				return RedirectToAction("Index");
 			}
 			return View("Add");
 
 		}
-		public IActionResult Edit(int productId)
+		public IActionResult Edit(Guid productId)
 		{
 			var product = productsStorage.TryGetById(productId);
 			return View(product);
@@ -44,11 +66,17 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
 
 		[HttpPost]
-		public IActionResult Edit(Product product)
+		public IActionResult Edit(ProductViewModel product)
 		{
 			if (ModelState.IsValid)
 			{
-				productsStorage.EditProduct(product);
+				var productDb = new Product
+				{
+					Name = product.Name,
+					Price = product.Price,
+					Description = product.Description
+				};
+				productsStorage.EditProduct(productDb);
 				return RedirectToAction("Index");
 			}
 			return RedirectToAction("Edit");

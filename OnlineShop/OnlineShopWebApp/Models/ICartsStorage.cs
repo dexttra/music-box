@@ -2,9 +2,9 @@
 {
 	public interface ICartsStorage
 	{
-		void Add(int userId, Product product);
-		Cart TryGetByUserId(int userId);
-		void RemoveItem(int userId, int productId);
-		void ClearAll(int userId);
+		//void Add(Guid userId, ProductViewModel product);
+		Cart TryGetByUserId(Guid userId);
+		void RemoveItem(Guid userId, Guid productId);
+		void ClearAll(Guid userId);
 	}
 }

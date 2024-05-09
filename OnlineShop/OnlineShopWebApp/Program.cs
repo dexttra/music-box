@@ -1,20 +1,25 @@
 using OnlineShopWebApp.Models;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
+using OnlineShop.Db;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, configuration) => configuration
 .ReadFrom.Configuration(context.Configuration)
 .Enrich.WithProperty("ApplicationName", "Music Box"));
+string connection = builder.Configuration.GetConnectionString("online_shop");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IProductsStorage, ProductsInMemoryStorage>();
+builder.Services.AddTransient<IProductsRepository, ProductsDbRepository>();
 builder.Services.AddSingleton<ICartsStorage, CartsInMemoryStorage>();
 builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
 builder.Services.AddSingleton<IRolesStorage, RolesInMemoryStorage>();
 builder.Services.AddSingleton<IUsersManager, UsersManager>();
-
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
 
 var app = builder.Build();
 

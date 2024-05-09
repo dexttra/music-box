@@ -4,10 +4,10 @@
     {
         private static int uniqId;
         public int Id { get; }
-        public Product Product { get; set; }
+        public ProductViewModel Product { get; set; }
         public int Amount { get; set; }
         
-        public CartItem(Product product, int amount)
+        public CartItem(ProductViewModel product, int amount)
         {
             Id = uniqId++;
             Product = product;

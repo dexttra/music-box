@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model List<ProductViewModel>
 @{
 	ViewData["Title"] = "Home Page";
 }
@@ -13,7 +13,7 @@
 </header>
 
 <div class="products-container">
-	@foreach (Product product in Model)
+	@foreach (ProductViewModel product in Model)
 	{
 		<div class="product-item">
 			<a class="product-link" href="/product/index/@product.Id">

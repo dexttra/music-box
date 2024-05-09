@@ -31,4 +31,8 @@
     <Folder Include="wwwroot\fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.Db\OnlineShop.Db.csproj" />
+  </ItemGroup>
+
 </Project>

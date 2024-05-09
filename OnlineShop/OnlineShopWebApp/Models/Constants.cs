@@ -2,6 +2,6 @@
 {
 	public static class Constants
 	{
-		public static int UserId = 1;
+		public static Guid UserId = new Guid();
 	}
 }
