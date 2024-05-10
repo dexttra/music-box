@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShop.Db;
 using OnlineShop.Db.Models;
-using System.Reflection.Metadata.Ecma335;
 
 namespace OnlineShopWebApp.Models
 {
@@ -14,11 +13,9 @@ namespace OnlineShopWebApp.Models
 			this.databaseContext = databaseContext;
 		}
 
-		public DbSet<Cart> Carts { get; set; }
-
 		public List<Cart> GetAll(Guid userId) 
 		{
-			return Carts.ToList();
+			return databaseContext.Carts.ToList();
 		}
 
 		public Cart TryGetByUserId(Guid userId)
@@ -31,12 +28,20 @@ namespace OnlineShopWebApp.Models
 			var existingCart = TryGetByUserId(userId);
 			if (existingCart is null)
 			{
-				var newCart = new Cart(userId);
+				var newCart = new Cart
+				{
+					UserId = userId
+				};
 				newCart.Items = new List<CartItem>
 				{
-					new CartItem(product, 1)
+					new CartItem
+					{
+						Id = new Guid(),
+						Product = product,
+						Amount = 1
+					}
 				};
-				Cart.Add(newCart);
+				databaseContext.Carts.Add(newCart);
 			}
 			else
 			{
@@ -47,7 +52,13 @@ namespace OnlineShopWebApp.Models
 				}
 				else
 				{
-					existingCart.Items.Add(new CartItem(product, 1));
+					existingCart.Items.Add(
+						new CartItem
+						{
+							Id = new Guid(),
+							Product = product,
+							Amount = 1
+						});
 				}
 			}
 		}

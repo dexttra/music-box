@@ -15,7 +15,7 @@ string connection = builder.Configuration.GetConnectionString("online_shop");
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IProductsRepository, ProductsDbRepository>();
-builder.Services.AddSingleton<ICartsRepository, CartsDbRepository>();
+builder.Services.AddTransient<ICartsRepository, CartsDbRepository>();
 builder.Services.AddSingleton<IOrdersStorage, OrdersInMemoryStorage>();
 builder.Services.AddSingleton<IRolesStorage, RolesInMemoryStorage>();
 builder.Services.AddSingleton<IUsersManager, UsersManager>();

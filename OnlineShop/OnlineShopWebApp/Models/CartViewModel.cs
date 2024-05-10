@@ -2,8 +2,8 @@
 {
     public class CartViewModel
     {
-        public Guid UserId { get; }
-        public List<CartItemViewModel> Items { get; set; } = new List<CartItemViewModel>();
+        public Guid UserId { get; set; }
+        public List<CartItemViewModel> Items { get; set; }
 
         public decimal Price
         {
@@ -11,6 +11,7 @@
             {
                 return Items.Sum(x => x.Price);
             }
+            set { }
         }
 
         public int Amount
@@ -19,14 +20,8 @@
             {
                 return Items?.Sum(x => x.Amount) ?? 0;
             }
+            set { }
         }
-
-        public CartViewModel(Guid userId)
-        {
-            UserId = userId;
-        }
-
-
 
     }
 }

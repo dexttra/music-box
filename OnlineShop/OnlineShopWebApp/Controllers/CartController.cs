@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.CodeAnalysis;
 using OnlineShop.Db;
+using OnlineShop.Db.Models;
 using OnlineShopWebApp.Models;
 using System;
 
@@ -20,23 +21,35 @@ namespace OnlineShopWebApp.Controllers
 
 		public IActionResult Index()
 		{
-			var cart = productsStorage.GetAll();
-			var productsViewModel = new List<ProductViewModel>();
-			foreach (var product in products)
-			{
-				var productViewModel = new ProductViewModel
-				{
-					Id = product.Id,
-					Name = product.Name,
-					Description = product.Description,
-					Price = product.Price,
-					ImagePath = product.ImagePath
-				};
-				productsViewModel.Add(productViewModel);
-			}
-			return View(productsViewModel);
 			var cart = cartsStorage.TryGetByUserId(Constants.UserId);
-			return View(cart);
+			var cartItemsViewModel = new List<CartItemViewModel>();
+
+			foreach (CartItem cartItem in cart.Items)
+			{
+				var cartItemViewModel = new CartItemViewModel
+				{
+					Id = cartItem.Id,
+					Product = new ProductViewModel
+					{
+						Id = cartItem.Product.Id,
+						Name = cartItem.Product.Name,
+						Description = cartItem.Product.Description,
+						Price = cartItem.Product.Price,
+						ImagePath = cartItem.Product.ImagePath
+					},
+					Amount = cartItem.Amount,
+					Price = cartItem.Price
+				};
+				cartItemsViewModel.Add(cartItemViewModel);
+			}
+			var cartViewModel = new CartViewModel
+			{
+				UserId = cart.UserId,
+				Items = cartItemsViewModel,
+				Price = cart.Price,
+				Amount = cart.Amount
+			};
+			return View(cartViewModel);
 		}
 
 		public IActionResult Add(Guid productId)
@@ -50,7 +63,7 @@ namespace OnlineShopWebApp.Controllers
 			cartsStorage.RemoveItem(Constants.UserId, productId);
 			return RedirectToAction("Index");
 		}
-		public IActionResult ClearAll(int userId)
+		public IActionResult ClearAll(Guid userId)
 		{
 			cartsStorage.ClearAll(Constants.UserId);
 			return RedirectToAction("Index");
