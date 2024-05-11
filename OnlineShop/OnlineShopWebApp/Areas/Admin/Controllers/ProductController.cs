@@ -61,7 +61,16 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 		public IActionResult Edit(Guid productId)
 		{
 			var product = productsStorage.TryGetById(productId);
-			return View(product);
+
+			var productViewModel = new ProductViewModel
+			{
+				Id = product.Id,
+				Name = product.Name,
+				Description = product.Description,
+				Price = product.Price,
+				ImagePath = product.ImagePath
+			};
+			return View(productViewModel);
 		}
 
 
@@ -72,9 +81,11 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			{
 				var productDb = new Product
 				{
+					Id = product.Id,
 					Name = product.Name,
 					Price = product.Price,
-					Description = product.Description
+					Description = product.Description,
+					ImagePath = product.ImagePath
 				};
 				productsStorage.EditProduct(productDb);
 				return RedirectToAction("Index");

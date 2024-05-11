@@ -10,18 +10,19 @@ namespace OnlineShopWebApp.Controllers
 {
 	public class CartController : Controller
 	{
-		private readonly ICartsRepository cartsStorage;
-		private readonly IProductsRepository productsStorage;
+		private readonly ICartsRepository cartsRepository;
+		private readonly IProductsRepository productsRepository;
 
 		public CartController(ICartsRepository cartsStorage, IProductsRepository productsStorage)
 		{
-			this.cartsStorage = cartsStorage;
-			this.productsStorage = productsStorage;
+			this.cartsRepository = cartsStorage;
+			this.productsRepository = productsStorage;
 		}
 
 		public IActionResult Index()
 		{
-			var cart = cartsStorage.TryGetByUserId(Constants.UserId);
+			var cart = cartsRepository.TryGetByUserId(Constants.UserId);
+			if (cart is null) return View();
 			var cartItemsViewModel = new List<CartItemViewModel>();
 
 			foreach (CartItem cartItem in cart.Items)
@@ -54,18 +55,18 @@ namespace OnlineShopWebApp.Controllers
 
 		public IActionResult Add(Guid productId)
 		{
-			var product = productsStorage.TryGetById(productId);
-			cartsStorage.Add(Constants.UserId, product);
+			var product = productsRepository.TryGetById(productId);
+			cartsRepository.Add(Constants.UserId, product);
 			return RedirectToAction("Index");
 		}
 		public IActionResult RemoveItem(int userId, Guid productId)
 		{
-			cartsStorage.RemoveItem(Constants.UserId, productId);
+			cartsRepository.RemoveItem(Constants.UserId, productId);
 			return RedirectToAction("Index");
 		}
 		public IActionResult ClearAll(Guid userId)
 		{
-			cartsStorage.ClearAll(Constants.UserId);
+			cartsRepository.ClearAll(Constants.UserId);
 			return RedirectToAction("Index");
 		}
 	}

@@ -42,6 +42,7 @@ namespace OnlineShopWebApp.Models
 					}
 				};
 				databaseContext.Carts.Add(newCart);
+				databaseContext.SaveChanges();
 			}
 			else
 			{
@@ -60,6 +61,7 @@ namespace OnlineShopWebApp.Models
 							Amount = 1
 						});
 				}
+				databaseContext.SaveChanges();
 			}
 		}
 
@@ -70,12 +72,14 @@ namespace OnlineShopWebApp.Models
 
 			if (cartItem.Amount == 1) cart.Items.Remove(cartItem);
 			else cartItem.Amount -= 1;
+		
 		}
 
 		public void ClearAll(Guid userId)
 		{
             var cart = TryGetByUserId(userId);
             cart.Items.Clear();
+		
 		}
 	}
 }
