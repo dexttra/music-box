@@ -13,14 +13,14 @@ namespace OnlineShopWebApp.Models
 			this.databaseContext = databaseContext;
 		}
 
-		public List<Cart> GetAll(Guid userId) 
+		public List<Cart> GetAll(Guid userId)
 		{
 			return databaseContext.Carts.ToList();
 		}
 
-		public Cart TryGetByUserId(Guid userId)
+		public Cart? TryGetByUserId(Guid userId)
 		{
-			return databaseContext.Carts.SingleOrDefault(cart => cart.UserId == userId);
+			return databaseContext.Carts.Include(c => c.Items).ThenInclude(ci => ci.Product).SingleOrDefault(c => c.UserId == userId);
 		}
 
 		public void Add(Guid userId, Product product)
@@ -32,15 +32,13 @@ namespace OnlineShopWebApp.Models
 				{
 					UserId = userId
 				};
-				newCart.Items = new List<CartItem>
+				var newItem = new CartItem
 				{
-					new CartItem
-					{
-						Id = new Guid(),
-						Product = product,
-						Amount = 1
-					}
+					CartId = newCart.UserId,
+					Product = product,
+					Amount = 1
 				};
+				newCart.Items.Add(newItem);
 				databaseContext.Carts.Add(newCart);
 				databaseContext.SaveChanges();
 			}
@@ -56,7 +54,7 @@ namespace OnlineShopWebApp.Models
 					existingCart.Items.Add(
 						new CartItem
 						{
-							Id = new Guid(),
+							CartId = existingCart.UserId,
 							Product = product,
 							Amount = 1
 						});
@@ -72,14 +70,14 @@ namespace OnlineShopWebApp.Models
 
 			if (cartItem.Amount == 1) cart.Items.Remove(cartItem);
 			else cartItem.Amount -= 1;
-		
+			databaseContext.SaveChanges();
 		}
 
 		public void ClearAll(Guid userId)
 		{
-            var cart = TryGetByUserId(userId);
-            cart.Items.Clear();
-		
+			var cart = TryGetByUserId(userId);
+			cart.Items.Clear();
+			databaseContext.SaveChanges();
 		}
 	}
 }

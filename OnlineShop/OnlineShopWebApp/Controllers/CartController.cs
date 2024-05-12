@@ -22,7 +22,7 @@ namespace OnlineShopWebApp.Controllers
 		public IActionResult Index()
 		{
 			var cart = cartsRepository.TryGetByUserId(Constants.UserId);
-			if (cart is null || cart.Items is null) return View();
+			if (cart is null || !cart.Items.Any()) return View();
 
 			var cartItemsViewModel = new List<CartItemViewModel>();
 			foreach (CartItem cartItem in cart.Items)
@@ -30,6 +30,7 @@ namespace OnlineShopWebApp.Controllers
 				var cartItemViewModel = new CartItemViewModel
 				{
 					Id = cartItem.Id,
+					CartId = cartItem.CartId,
 					Product = new ProductViewModel
 					{
 						Id = cartItem.Product.Id,
