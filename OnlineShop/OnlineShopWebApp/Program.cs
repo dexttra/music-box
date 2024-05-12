@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) => configuration
 .ReadFrom.Configuration(context.Configuration)
 .Enrich.WithProperty("ApplicationName", "Music Box"));
-string connection = builder.Configuration.GetConnectionString("online_shop");
+string connection = builder.Configuration.GetConnectionString("online_shop_laliev");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

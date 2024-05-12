@@ -22,9 +22,9 @@ namespace OnlineShopWebApp.Controllers
 		public IActionResult Index()
 		{
 			var cart = cartsRepository.TryGetByUserId(Constants.UserId);
-			if (cart is null) return View();
-			var cartItemsViewModel = new List<CartItemViewModel>();
+			if (cart is null || cart.Items is null) return View();
 
+			var cartItemsViewModel = new List<CartItemViewModel>();
 			foreach (CartItem cartItem in cart.Items)
 			{
 				var cartItemViewModel = new CartItemViewModel
