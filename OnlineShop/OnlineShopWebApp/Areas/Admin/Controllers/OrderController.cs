@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
+using OnlineShop.Db.Models;
+using OnlineShop.Db.Repositories;
 
 namespace OnlineShopWebApp.Areas.Admin.Controllers
 {
 	[Area("Admin")] 
 	public class OrderController : Controller
 	{
-		private readonly IOrdersStorage ordersStorage;
+		private readonly IOrdersRepository ordersStorage;
 
-		public OrderController(IOrdersStorage ordersStorage)
+		public OrderController(IOrdersRepository ordersStorage)
 		{
 			this.ordersStorage = ordersStorage;
 		}
@@ -19,14 +21,14 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 			return View(orders);
 		}
 
-		public ActionResult Details(int orderId)
+		public ActionResult Details(Guid orderId)
 		{
 			var order = ordersStorage.TryGetById(orderId);
 			return View(order);
 		}
 
 		[HttpPost]
-		public ActionResult UpdateStatus(int orderId, OrderStatus newStatus)
+		public ActionResult UpdateStatus(Guid orderId, OrderStatusViewModel newStatus)
 		{
 			ordersStorage.UpdateStatus(orderId, newStatus);
 			return RedirectToAction("Index");

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.CodeAnalysis;
-using OnlineShop.Db;
 using OnlineShop.Db.Models;
+using OnlineShop.Db.Repositories;
 using OnlineShopWebApp.Models;
 using System;
 
 namespace OnlineShopWebApp.Controllers
 {
-	public class CartController : Controller
+    public class CartController : Controller
 	{
 		private readonly ICartsRepository cartsRepository;
 		private readonly IProductsRepository productsRepository;

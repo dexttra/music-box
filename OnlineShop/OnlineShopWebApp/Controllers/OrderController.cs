@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db.Repositories;
 using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Controllers
 {
-	public class OrderController : Controller
+    public class OrderController : Controller
 	{
 		private readonly ICartsRepository cartsRepository;
-		private readonly IOrdersStorage ordersStorage;
+		private readonly IOrdersRepository ordersStorage;
 
-		public OrderController(ICartsRepository cartsStorage, IOrdersStorage ordersStorage)
+		public OrderController(ICartsRepository cartsStorage, IOrdersRepository ordersStorage)
 		{
 			this.ordersStorage = ordersStorage;
 			this.cartsRepository = cartsStorage;
@@ -20,7 +21,7 @@ namespace OnlineShopWebApp.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Buy(UserOrderInfo userInfo)
+		public IActionResult Buy(UserOrderInfoViewModel userInfo)
 		{
 			if (ModelState.IsValid)
 			{
@@ -53,7 +54,7 @@ namespace OnlineShopWebApp.Controllers
 					Price = cart.Price,
 					Amount = cart.Amount
 				};
-				Order order = new Order(userInfo, cartViewModel);
+				OrderViewModel order = new OrderViewModel(userInfo, cartViewModel);
 				ordersStorage.Add(order);
 				cartsRepository.ClearAll(Constants.UserId);
 				return View();

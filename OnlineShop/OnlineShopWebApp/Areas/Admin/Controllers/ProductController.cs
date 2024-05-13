@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Db;
 using OnlineShop.Db.Models;
+using OnlineShop.Db.Repositories;
 using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Areas.Admin.Controllers
 {
-	[Area("Admin")]
+    [Area("Admin")]
 	public class ProductController : Controller
 	{
 		private readonly IProductsRepository productsStorage;

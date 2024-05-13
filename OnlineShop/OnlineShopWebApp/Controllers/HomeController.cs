@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using OnlineShop.Db;
+using OnlineShop.Db.Repositories;
 using OnlineShopWebApp.Models;
 
 

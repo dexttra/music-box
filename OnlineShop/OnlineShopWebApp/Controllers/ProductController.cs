@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShop.Db;
+using OnlineShop.Db.Repositories;
 using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Controllers
 {
-	public class ProductController : Controller
+    public class ProductController : Controller
 	{
 		private readonly IProductsRepository productsStorage;
 

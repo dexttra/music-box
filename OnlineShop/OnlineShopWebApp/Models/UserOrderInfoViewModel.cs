@@ -3,7 +3,7 @@ using System.Xml;
 
 namespace OnlineShopWebApp.Models
 {
-	public class UserOrderInfo
+	public class UserOrderInfoViewModel
 	{
 		[Required(ErrorMessage = "Заполните поле")]
 		public string Name { get; set; }
@@ -20,7 +20,7 @@ namespace OnlineShopWebApp.Models
 		[Required(ErrorMessage = "Заполните поле")]
 		public string Street { get; set; }
 
-		public UserOrderInfo(string name, string surname, string email, string phone, string city, string street)
+		public UserOrderInfoViewModel(string name, string surname, string email, string phone, string city, string street)
 		{
 			Name = name;
 			Surname = surname;
@@ -30,7 +30,7 @@ namespace OnlineShopWebApp.Models
 			Street = street;
 		}
 
-		public UserOrderInfo()
+		public UserOrderInfoViewModel()
 		{
 		}
 	}
