@@ -6,8 +6,23 @@ namespace OnlineShopWebApp.Models
     {
 		public Guid Id { get; set; }
         public List<CartItem> Items { get; set; }
-        public decimal Price { get; set; }
-        public int Amount { get; set; }
+		public decimal Price
+		{
+			get
+			{
+				return Items.Sum(x => x.Price);
+			}
+			set { }
+		}
+
+		public int Amount
+		{
+			get
+			{
+				return Items?.Sum(x => x.Amount) ?? 0;
+			}
+			set { }
+		}
 
 		public Cart()
 		{

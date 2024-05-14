@@ -41,6 +41,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 						Amount = item.Amount,
 						Price = item.Price
 					};
+
 					ItemsViewModel.Add(ItemViewModel);
 				}
 
@@ -83,14 +84,68 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
 
 
-		public ActionResult Details(Guid orderId)
+		public ActionResult Details(Guid id)
 		{
-			var order = ordersStorage.TryGetById(orderId);
-			return View(order);
+			var order = ordersStorage.TryGetById(id);
+
+			// Items mapping
+			var itemsViewModel = new List<CartItemViewModel>();
+			foreach (CartItem item in order.Items)
+			{
+				var itemViewModel = new CartItemViewModel
+				{
+					Id = item.Id,
+					Product = new ProductViewModel
+					{
+						Id = item.Product.Id,
+						Name = item.Product.Name,
+						Description = item.Product.Description,
+						Price = item.Product.Price,
+						ImagePath = item.Product.ImagePath
+					},
+					Amount = item.Amount,
+					Price = item.Price
+				};
+				itemsViewModel.Add(itemViewModel);
+			}
+
+			// OrderStatus mapping
+			int statusIndex = (int)order.Status;
+			var newOrderStatus = new OrderStatusViewModel();
+
+			switch (statusIndex)
+			{
+				case 0: newOrderStatus = OrderStatusViewModel.Created; break;
+				case 1: newOrderStatus = OrderStatusViewModel.Processed; break;
+				case 2: newOrderStatus = OrderStatusViewModel.Delivering; break;
+				case 3: newOrderStatus = OrderStatusViewModel.Delivered; break;
+				case 4: newOrderStatus = OrderStatusViewModel.Received; break;
+				case 5: newOrderStatus = OrderStatusViewModel.Canceled; break;
+			}
+
+			var orderViewModel = new OrderViewModel
+			{
+				Id = order.Id,
+				UserOrderInfo = new UserOrderInfoViewModel
+				{
+					Name = order.UserOrderInfo.Name,
+					Surname = order.UserOrderInfo.Surname,
+					Email = order.UserOrderInfo.Email,
+					Phone = order.UserOrderInfo.Phone,
+					City = order.UserOrderInfo.City,
+					Street = order.UserOrderInfo.Street
+				},
+				Items = itemsViewModel,
+				Status = newOrderStatus,
+				CreationTime = order.CreationTime,
+				Price = order.Price
+			};
+
+			return View(orderViewModel);
 		}
 
 		[HttpPost]
-		public ActionResult UpdateStatus(Guid orderId, OrderStatusViewModel newStatus)
+		public ActionResult UpdateStatus(Guid id, OrderStatusViewModel newStatus)
 		{
 			int statusIndex = (int)newStatus;
 			var newOrderStatus = new OrderStatus();
@@ -105,7 +160,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 				case 5: newOrderStatus = OrderStatus.Canceled; break;
 			}
 
-			ordersStorage.UpdateStatus(orderId, newOrderStatus);
+			ordersStorage.UpdateStatus(id, newOrderStatus);
 			return RedirectToAction("Index");
 
 		}

@@ -4,7 +4,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Controllers
 {
-    public class OrderController : Controller
+	public class OrderController : Controller
 	{
 		private readonly ICartsRepository cartsRepository;
 		private readonly IOrdersRepository ordersRepository;
@@ -26,6 +26,7 @@ namespace OnlineShopWebApp.Controllers
 			if (ModelState.IsValid)
 			{
 				Cart cart = cartsRepository.TryGetByUserId(Constants.UserId);
+
 				var userOrderInfo = new UserOrderInfo
 				{
 					Name = userInfo.Name,
@@ -40,15 +41,15 @@ namespace OnlineShopWebApp.Controllers
 				{
 					UserOrderInfo = userOrderInfo,
 					Items = cart.Items,
-					Price = cart.Price,
-				}; 
+					Price = cart.Price
+				};
 
 				ordersRepository.Add(order);
 				cartsRepository.ClearAll(Constants.UserId);
 				return View();
 			}
 			return View("Index");
-	
+
 		}
 	}
 }
