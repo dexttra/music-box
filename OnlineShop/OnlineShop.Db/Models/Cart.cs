@@ -4,8 +4,7 @@ namespace OnlineShopWebApp.Models
 {
     public class Cart
     {
-		[Key]
-		public Guid UserId { get; set; }
+		public Guid Id { get; set; }
         public List<CartItem> Items { get; set; }
         public decimal Price { get; set; }
         public int Amount { get; set; }

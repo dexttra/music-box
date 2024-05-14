@@ -30,7 +30,7 @@
 					<td>Статус</td>
 					<td>
 						<select name="newStatus"
-								asp-for="@Model.OrderStatus"
+								asp-for="@Model.Status"
 								asp-items="@Html.GetEnumSelectList<OrderStatusViewModel>()"
 								class="form-control">
 						</select>

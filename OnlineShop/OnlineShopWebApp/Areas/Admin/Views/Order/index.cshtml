@@ -6,6 +6,7 @@
 
 <h1>Список заказов</h1>
 @await Html.PartialAsync("AdminPanel")
+
 <div class="row">
 	<div class="col-9">
 		<h3>Список заказов</h3>
@@ -28,7 +29,7 @@
 					<tr>
 						<td>@Model[i].Id</td>
 						<td>@Model[i].Price</td>
-						<td>@EnumHelper.GetDisplayName(Model[i].OrderStatus)</td>
+						<td>@EnumHelper.GetDisplayName(Model[i].Status)</td>
 						<td>@Model[i].CreationTime.ToString("d")</td>
 						<td>@Model[i].CreationTime.ToString("t")</td>
 						<td>
@@ -43,4 +44,3 @@
 		</table>
 	</div>
 </div>
-

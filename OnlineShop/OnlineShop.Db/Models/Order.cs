@@ -5,20 +5,18 @@ namespace OnlineShopWebApp.Models
 	public class Order
 	{
 		public Guid Id { get; set; }
-
-		public UserOrderInfo UserOrderInfo;
-		public Cart Cart { get; set; }
-		public OrderStatus OrderStatus { get; set; }
+		public UserOrderInfo UserOrderInfo { get; set; }
+		public List<CartItem> Items { get; set; }
+		public OrderStatus Status { get; set; }
 		public DateTime CreationTime { get; set; }
 		public decimal Price { get; set; }
 
-		public Order(UserOrderInfo userOrderInfo, Cart cart)
+		public Order()
 		{
-			UserOrderInfo = userOrderInfo;
-			Cart = cart;
-			OrderStatus = OrderStatus.Created;
+			Items = new List<CartItem>();
+			Status = OrderStatus.Created;
 			CreationTime = DateTime.Now;
-			Price = Cart.Price;
 		}
+
 	}
 }

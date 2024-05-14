@@ -20,18 +20,5 @@ namespace OnlineShopWebApp.Models
 		[Required(ErrorMessage = "Заполните поле")]
 		public string Street { get; set; }
 
-		public UserOrderInfoViewModel(string name, string surname, string email, string phone, string city, string street)
-		{
-			Name = name;
-			Surname = surname;
-			Email = email;
-			Phone = phone;
-			City = city;
-			Street = street;
-		}
-
-		public UserOrderInfoViewModel()
-		{
-		}
 	}
 }

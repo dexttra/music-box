@@ -30,7 +30,6 @@ namespace OnlineShopWebApp.Controllers
 				var cartItemViewModel = new CartItemViewModel
 				{
 					Id = cartItem.Id,
-					CartId = cartItem.CartId,
 					Product = new ProductViewModel
 					{
 						Id = cartItem.Product.Id,
@@ -46,7 +45,7 @@ namespace OnlineShopWebApp.Controllers
 			}
 			var cartViewModel = new CartViewModel
 			{
-				UserId = cart.UserId,
+				Id = cart.Id,
 				Items = cartItemsViewModel,
 				Price = cart.Price,
 				Amount = cart.Amount

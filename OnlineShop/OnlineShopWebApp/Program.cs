@@ -17,7 +17,7 @@ string connection = builder.Configuration.GetConnectionString("online_shop_lalie
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IProductsRepository, ProductsDbRepository>();
 builder.Services.AddTransient<ICartsRepository, CartsDbRepository>();
-builder.Services.AddSingleton<IOrdersRepository, OrdersDbRepository>();
+builder.Services.AddTransient<IOrdersRepository, OrdersDbRepository>();
 builder.Services.AddSingleton<IRolesStorage, RolesInMemoryStorage>();
 builder.Services.AddSingleton<IUsersManager, UsersManager>();
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));

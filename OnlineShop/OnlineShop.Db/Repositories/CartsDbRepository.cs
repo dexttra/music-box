@@ -21,7 +21,7 @@ namespace OnlineShop.Db.Repositories
 
         public Cart? TryGetByUserId(Guid userId)
         {
-            return databaseContext.Carts.Include(c => c.Items).ThenInclude(ci => ci.Product).SingleOrDefault(c => c.UserId == userId);
+            return databaseContext.Carts.Include(c => c.Items).ThenInclude(ci => ci.Product).SingleOrDefault(c => c.Id == userId);
         }
 
         public void Add(Guid userId, Product product)
@@ -31,11 +31,10 @@ namespace OnlineShop.Db.Repositories
             {
                 var newCart = new Cart
                 {
-                    UserId = userId
+                    Id = userId
                 };
                 var newItem = new CartItem
                 {
-                    CartId = newCart.UserId,
                     Product = product,
                     Amount = 1
                 };
@@ -54,8 +53,7 @@ namespace OnlineShop.Db.Repositories
                 {
                     existingCart.Items.Add(
                         new CartItem
-                        {
-                            CartId = existingCart.UserId,
+                        {                           
                             Product = product,
                             Amount = 1
                         });

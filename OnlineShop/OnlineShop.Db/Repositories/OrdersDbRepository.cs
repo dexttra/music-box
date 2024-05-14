@@ -1,4 +1,5 @@
-﻿using OnlineShop.Db.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineShop.Db.Models;
 using OnlineShopWebApp.Models;
 
 namespace OnlineShop.Db.Repositories
@@ -16,16 +17,21 @@ namespace OnlineShop.Db.Repositories
 		public void Add(Order order)
 		{
 			databaseContext.Orders.Add(order);
+			databaseContext.SaveChanges();
 		}
 
 		public List<Order> GetAll()
 		{
-			return databaseContext.Orders.ToList();
+			return databaseContext.Orders.Include(x => x.UserOrderInfo)
+				.Include(x => x.Items).ThenInclude(x => x.Product).ToList();
 		}
 
-		public Order TryGetById(Guid orderId)
+		public Order TryGetById(Guid id)
 		{
-			return databaseContext.Orders.FirstOrDefault(order => order.Id == orderId);
+			return databaseContext.Orders.Include(x => x.UserOrderInfo)
+				.Include(x => x.Items)
+				.ThenInclude(x => x.Product)
+				.FirstOrDefault(x => x.Id == id);
 		}
 
 		public void UpdateStatus(Guid orderId, OrderStatus newStatus)
@@ -33,8 +39,9 @@ namespace OnlineShop.Db.Repositories
 			var order = TryGetById(orderId);
 			if (order != null)
 			{
-				order.OrderStatus = newStatus;
+				order.Status = newStatus;
 			}
+			databaseContext.SaveChanges();
 		}
 	}
 }
