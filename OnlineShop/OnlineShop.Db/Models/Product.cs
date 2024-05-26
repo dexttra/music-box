@@ -10,5 +10,16 @@ namespace OnlineShop.Db.Models
 		public decimal Price { get; set; }
 		public string ImagePath { get; set; }
 
+		public Product(Guid id, string name, decimal price, string description, string imagePath)
+		{
+			Id = id;
+			Name = name;
+			Price = price;
+			Description = description;
+			ImagePath = imagePath;
+		}
+		public Product()
+		{
+		}
 	}
 }
