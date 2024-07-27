@@ -20,7 +20,7 @@ Online shop of vinyl records developed using ASP.NET Core.
 - MS SQL
 - Serilog
 - ASP.NET Core Identity
-### 💻 Running the Application :
+### 💿 Running the Application :
 To get started with the app, follow these steps:
 1. Clone the Repository
 
@@ -45,4 +45,15 @@ To get started with the app, follow these steps:
     ```bash
     dotnet run
     ```
- ### 💻 Project Demonstration :
+### 💻 Project Demonstration:
+
+<img src="https://github.com/user-attachments/assets/a1335c3a-6ef9-4b51-b106-60533b17ffa3" alt="Home" width="300"/>
+<img src="https://github.com/user-attachments/assets/a45d0367-f02b-42b8-956d-0d55da8284c0" alt="Product" width="300"/>
+<img src="https://github.com/user-attachments/assets/1033800f-a14d-46ce-be11-224d03ec6846" alt="Cart" width="300"/>
+<img src="https://github.com/user-attachments/assets/041b3d14-109d-4346-9d44-21742eeb3111" alt="OrderInfo" width="300"/>
+<img src="https://github.com/user-attachments/assets/a0ba013e-7be2-4b9e-aeea-17b33a159e8c" alt="Image" width="300"/>
+
+
+
+
+
