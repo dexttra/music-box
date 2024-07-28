@@ -1,6 +1,6 @@
 ## 🎵 Web-app "Music Box" 
 Online shop of vinyl records developed using ASP.NET Core.
-### ⚙️ Features :
+### 🌀 Features :
 - Logging using Serilog.
 - Mapping data using AutoMapper.
 - View the product catalog and add to cart.
@@ -12,7 +12,7 @@ Online shop of vinyl records developed using ASP.NET Core.
   - Display a list of all orders.
   - Editing order's status.
 - Database: MS SQL.
-### 🛠️ Technologies Used :
+### 🌀 Technologies Used :
 - ASP.NET Core MVC
 - Entity Framework
 - HTML, CSS, JS
@@ -20,7 +20,7 @@ Online shop of vinyl records developed using ASP.NET Core.
 - MS SQL
 - Serilog
 - ASP.NET Core Identity
-### 💿 Running the Application :
+### 🌀 Running the Application :
 To get started with the app, follow these steps:
 1. Clone the Repository
 
@@ -45,7 +45,7 @@ To get started with the app, follow these steps:
     ```bash
     dotnet run
     ```
-### 💻 Project Demonstration:
+### 🌀 Project Demonstration:
 
 <img src="https://github.com/user-attachments/assets/a1335c3a-6ef9-4b51-b106-60533b17ffa3" alt="Home" width="300"/>
 <img src="https://github.com/user-attachments/assets/a45d0367-f02b-42b8-956d-0d55da8284c0" alt="Product" width="300"/>
