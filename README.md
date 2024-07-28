@@ -5,7 +5,7 @@ Online shop of vinyl records developed using ASP.NET Core.
 - Mapping data using AutoMapper.
 - View the product catalog and add to cart.
 - Placing an order.
-- Authorization and authentication using ASP.NET Core Identity (in process)
+- Authorization and authentication using ASP.NET Core Identity
 - Admin panel:  
   - Creating, editing and deleting products.
   - Editing user's data.
