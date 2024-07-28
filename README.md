@@ -17,6 +17,7 @@ Online shop of vinyl records developed using ASP.NET Core.
 - Entity Framework
 - HTML, CSS, JS
 - LINQ
+- Dependency Injection
 - MS SQL
 - Serilog
 - ASP.NET Core Identity
